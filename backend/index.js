@@ -7,7 +7,7 @@ import dotenv from 'dotenv'
 
 
 
-dotenv.configDotenv({path:'../.env'})
+dotenv.configDotenv({path:'../credentials.env'})
 const MONGO_URI = process.env.MONGO_URI
 
 
