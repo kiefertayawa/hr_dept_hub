@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import router from './router.js'
 
-
 // packages installed: express, mongoose, nodemon, dotenv
 // npm run dev
 

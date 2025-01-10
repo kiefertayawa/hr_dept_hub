@@ -28,7 +28,9 @@ const getFamilyTree = async (req, res) => {
             await getAllDescendants(bloodline, charterMember)
             toSend.push(bloodline)
         }
-
+        
+        // CORS
+        res.set('Access-Control-Allow-Origin', '*')
         res.status(200).json(toSend)
 
     }catch (error){
