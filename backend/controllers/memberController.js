@@ -39,4 +39,52 @@ const getFamilyTree = async (req, res) => {
     }
 }
 
-export default getFamilyTree
+
+
+
+
+// For getting specific member
+const getMember = async (req, res) => {
+    res.json({mssg: 'GET single member'})
+    
+}
+
+
+// For adding new member
+const addMember = async (req, res) => {
+    const {id, parent, name, collegeBatch, ysesBatch} = req.body
+
+    try {
+        const member = await Member.create({id, parent, name, collegeBatch, ysesBatch})
+        res.status(200).json(member)
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({error: error.message})
+    }
+    
+}
+
+
+// // For deleting a single member
+// const deleteMember = async (req, res) => {
+//     res.json({mssg: 'DELETE a single member'})
+    
+// }
+
+
+// // For updating member details
+// const editMember = async (req, res) => {
+//     res.json({mssg: 'UPDATE member details'})
+    
+// }
+
+
+
+
+export default  { 
+    getFamilyTree, 
+    getMember, 
+    addMember,
+    // deleteMember,
+    // editMember
+}
