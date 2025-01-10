@@ -11,7 +11,18 @@ import userRoutes from './routes/userRoutes.js'
 dotenv.configDotenv({path:'../credentials.env'})
 const MONGO_URI = process.env.MONGO_URI
 const PORT = 4000 //process.env.PORT
+
+// Express app
 const app = express()
+
+// Middleware
+app.use(express.json())
+
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
+})
+
 
 mongoose.connect(MONGO_URI)
     .then(()=>{
