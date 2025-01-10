@@ -1,5 +1,5 @@
 import express from 'express'
-import getFamilyTree from './controllers/memberController.js'
+import getFamilyTree from '../controllers/memberController.js'
 
 const router = express.Router()
 

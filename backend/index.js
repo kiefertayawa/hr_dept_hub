@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import router from './router.js'
+import router from './routes/memberRouter'
 
 // packages installed: express, mongoose, nodemon, dotenv
 // npm run dev
