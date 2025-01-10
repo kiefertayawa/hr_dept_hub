@@ -19,7 +19,7 @@ router.post('/', memberController.addMember)
 // router.delete('/:id', memberController.deleteMember)
 
 // // PATCH member detail
-// router.patch('/:id', memberController.editMember)
+// router.patch('/:id', memberController.updateMember)
 
 
 

@@ -1,4 +1,5 @@
-import Member from "../models/memberModel.js"
+import Member from '../models/memberModel.js'
+import mongoose from 'mongoose'
 
 // For sending family tree content
 const getFamilyTree = async (req, res) => {
@@ -45,8 +46,24 @@ const getFamilyTree = async (req, res) => {
 
 // For getting specific member
 const getMember = async (req, res) => {
-    res.json({mssg: 'GET single member'})
-    
+    // Retrieve id in parameters
+    const {id} =  req.params
+
+    // Check if valid id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Member does not exist'})
+    }
+
+    // Assign to local variable
+    const member = await Member.findById(id)
+
+    // If memmber does not exist
+    if (!member) {
+        return res.status(404).json({error: 'Member does not exist'})
+    }
+
+    // Return response
+    res.status(200).json(member)    
 }
 
 
@@ -60,22 +77,45 @@ const addMember = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(400).json({error: error.message})
-    }
-    
+    }    
 }
 
 
 // // For deleting a single member
 // const deleteMember = async (req, res) => {
-//     res.json({mssg: 'DELETE a single member'})
+//     const {id} =  req.params
+
+//     if (!mongoose.Types.ObjectId.isValid(id)) {
+//         return res.status(404).json({error: 'Member does not exist'})
+//     }
+
+//     const member = await Member.findOneAndDelete({_id: id})
     
+//     if (!member) {
+//         return res.status(400).json({error: 'Member does not exist'})
+//     }
+
+//     res.status(200).json(member)    
 // }
 
 
 // // For updating member details
-// const editMember = async (req, res) => {
-//     res.json({mssg: 'UPDATE member details'})
+// const updateMember = async (req, res) => {
+//     const {id} =  req.params
+
+//     if (!mongoose.Types.ObjectId.isValid(id)) {
+//         return res.status(404).json({error: 'Member does not exist'})
+//     }
+
+//     const member = await Member.findOneAndUpdate({_id: id}, {
+//         ...req.body
+//     })
     
+//     if (!member) {
+//         return res.status(400).json({error: 'Member does not exist'})
+//     }
+
+//     res.status(200).json(member)  
 // }
 
 
@@ -86,5 +126,5 @@ export default  {
     getMember, 
     addMember,
     // deleteMember,
-    // editMember
+    // updateMember
 }
