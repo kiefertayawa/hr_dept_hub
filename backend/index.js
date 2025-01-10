@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 import memberRoutes from './routes/memberRouter.js'
+import searchRoutes from './routes/searchRouter.js'
 import userRoutes from './routes/userRoutes.js'
 
 // packages installed: express, mongoose, nodemon, dotenv, bcrypt, jsonwebtoken
@@ -27,3 +28,4 @@ mongoose.connect(MONGO_URI)
 
 app.use('/api/member', memberRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/search', searchRoutes)
