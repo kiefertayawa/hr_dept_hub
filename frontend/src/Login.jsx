@@ -1,8 +1,8 @@
 import "./Login.css";
-import bg from "../../src/assets/bg video black.mp4"; 
-import headerBg from '../../src/assets/header bg.png';
-import loginIcon from "../../src/assets/login icon.png"; 
-import loginBg from "../../src/assets/login bg.png"; 
+import bg from "./assets/bg video black.mp4"; 
+import headerBg from './assets/header bg.png';
+import loginIcon from "./assets/login icon.png"; 
+import loginBg from "./assets/login bg.png"; 
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin"
 
