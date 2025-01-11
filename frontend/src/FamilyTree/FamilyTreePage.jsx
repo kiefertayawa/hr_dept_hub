@@ -1,32 +1,21 @@
-// Collection of OrgChartComponents, all bloodlines
+import React, { useState, useEffect } from 'react';
+import Bloodline from './Bloodline';
+import * as d3 from 'd3';
 
-import { useEffect, useState } from "react"
-import Bloodline from './Bloodline'
-
-export default function FamilyTreePage(){
-    
-    const [bloodlines, setBloodlines] = useState(null)
+export default function FamilyTreePage(props) {
+    const [data, setData] = useState(null);
 
     useEffect(() => {
-
-        const fetchFamilyTreeContent = async () => {
-            const data = await (await fetch('http://localhost:4000/api/member/getAll', {mode:"cors"})).json()
-            console.log(data)
-            setBloodlines(data)
-        }
-
-        fetchFamilyTreeContent()
-
-    }, [])
     
-    return(
-        <ol>
-            {
-                bloodlines && bloodlines.map((bloodline, index) => {
-                    return <Bloodline key={index} bloodline={bloodline}/>
-                })
-            }
-        </ol>
+        d3.json('http://localhost:4000/api/member/getAll')
+        .then((data) => {
+        setData(data[0])
+        
+    })}, [true]);
+    
+    return (
+        <>
+             <Bloodline data={data}/>
+        </>
     )
-
 }

@@ -5,10 +5,7 @@ const MemberSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    parent: {
-        type: String,
-        required: true
-    },
+    parentId: String,
     name: String,
     collegeBatch: String,
     ysesBatch: String,

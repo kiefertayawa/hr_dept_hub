@@ -5,8 +5,8 @@ import FamilyTreePage from "./FamilyTree/FamilyTreePage"
 
 function App() {
   return(
-    <Login />
-    //<FamilyTreePage />
+    // <Login />
+    <FamilyTreePage />
     // <div className='App'>
     //   <BrowserRouter>     
     //     <div className='pages'>

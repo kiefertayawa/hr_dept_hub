@@ -10,7 +10,7 @@ const getFamilyTree = async (req, res) => {
     // Recursively gets all the descendants of a given node and pushes to a given bloodline array
     const getAllDescendants = async (bloodlineArray, member) => {
         
-        const children = await Member.find({parent:member.id})
+        const children = await Member.find({parentId:member.id})
         
         if(children.length!==0){
             for (const child of children){
@@ -25,7 +25,14 @@ const getFamilyTree = async (req, res) => {
 
         const toSend = []
         const charterMembers = await Member.find(CRITERIA)
-        
+
+        // charterMembers.map(charterMember => {
+        //     // OMMIT _id FROM ALL
+        //     const {_id, ...rest} = charterMember
+        //     console.log(rest)
+        //     return({rest}) 
+        // })
+
         // Grabs all the descendants of each charter member and puts them in a bloodline
         for (const charterMember of charterMembers){
             const bloodline = [charterMember]
