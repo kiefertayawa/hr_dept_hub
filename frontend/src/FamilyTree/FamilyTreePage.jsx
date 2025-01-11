@@ -10,7 +10,7 @@ export default function FamilyTreePage(){
     useEffect(() => {
 
         const fetchFamilyTreeContent = async () => {
-            const data = await (await fetch('http://localhost:4000/', {mode:"cors"})).json()
+            const data = await (await fetch('http://localhost:4000/api/member/getAll', {mode:"cors"})).json()
             setBloodlines(data)
         }
 

@@ -3,9 +3,8 @@ import memberController from '../controllers/memberController.js'
 
 const router = express.Router()
 
+// Get all members
 router.get('/getAll', memberController.getFamilyTree)
-
-
 
 // Get single member
 router.get('/:id', memberController.getMember)
