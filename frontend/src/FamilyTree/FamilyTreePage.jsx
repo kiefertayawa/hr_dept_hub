@@ -11,6 +11,7 @@ export default function FamilyTreePage(){
 
         const fetchFamilyTreeContent = async () => {
             const data = await (await fetch('http://localhost:4000/api/member/getAll', {mode:"cors"})).json()
+            console.log(data)
             setBloodlines(data)
         }
 

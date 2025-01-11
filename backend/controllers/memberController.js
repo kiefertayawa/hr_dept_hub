@@ -4,6 +4,9 @@ import mongoose from 'mongoose'
 // For sending family tree content
 const getFamilyTree = async (req, res) => {
 
+    const CRITERIA = {id:"3"}
+    // const CRITERIA = {ysesBatch:"Charter"}
+
     // Recursively gets all the descendants of a given node and pushes to a given bloodline array
     const getAllDescendants = async (bloodlineArray, member) => {
         
@@ -21,7 +24,7 @@ const getFamilyTree = async (req, res) => {
     try {
 
         const toSend = []
-        const charterMembers = await Member.find({ysesBatch:"Charter"})
+        const charterMembers = await Member.find(CRITERIA)
         
         // Grabs all the descendants of each charter member and puts them in a bloodline
         for (const charterMember of charterMembers){
