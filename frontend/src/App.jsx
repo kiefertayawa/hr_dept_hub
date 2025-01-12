@@ -1,12 +1,12 @@
 // import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Login from "./Login.jsx";
-import FamilyTreePage from "./FamilyTree/FamilyTreePage"
+import Login from "./Login/Login.jsx";
+import FamilyTree from "./FamilyTree/FamilyTree.jsx"
 
 function App() {
   return(
     // <Login />
-    <FamilyTreePage />
+    <FamilyTree />
     // <div className='App'>
     //   <BrowserRouter>     
     //     <div className='pages'>
