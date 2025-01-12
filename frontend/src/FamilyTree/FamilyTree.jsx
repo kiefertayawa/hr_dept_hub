@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import * as d3 from 'd3';
 import { OrgChart } from 'd3-org-chart';
+import MemberInfo from './MemberInfo';
 
 export default function FamilyTree() {
     
     const [data, setData] = useState(null)
     const [index, setIndex] = useState(0)
     const d3Container = useRef(null);
-    const chartRef = useRef(new OrgChart());
+    const chartRef = useRef(new OrgChart())
+    const [showInfo, setShow] = useState(false)
+    const [nodeInfo, setNodeInfo] = useState(null)
 
     const divStyle = {
         width: "100vw",
@@ -34,9 +37,12 @@ export default function FamilyTree() {
                     return `ID:${data.data.id}<br>NAME:${data.data.name}<br>PARENT:${data.data.parentId}`
                     // insert <TreeNode data=data.data /> component here
                 })
-                .svgHeight((d) => divStyle.height)
-                .svgWidth((d) => divStyle.width)
                 .expandAll()
+                .onNodeClick((d)=>{
+                    setShow(true)
+                    setNodeInfo({...d.data})
+                    console.log(d)
+                })
                 .render()
         }
     }
@@ -54,16 +60,27 @@ export default function FamilyTree() {
         if(data && index+direction >= 0 && index+direction < data.length)
         {
             setIndex(index+direction)
-            generateChart(index+direction)
-            console.log(index+direction)
+            chartRef.current.data(data[index+direction]).expandAll().render()
+            // chartRef.current.setExpanded("71").setCentered("71").render()
+            // console.log(index+direction)
         }
     }
 
     return (
-        <div style={divStyle}>
-            <button style={{...btnStyle, right:"95%"}} onClick={() => switchBloodline(-1)}>&lt;</button>
-            <button style={{...btnStyle, left:"95%"}} onClick={() => switchBloodline(1)}>&gt;</button>
-            { data && <div ref={d3Container} /> }
-        </div>
+        <>
+            { 
+                !showInfo && <div style={divStyle}>
+                    <button style={{...btnStyle, right:"85%"}} onClick={() => switchBloodline(-1)}>&lt;</button>
+                    <button style={{...btnStyle, left:"85%"}} onClick={() => switchBloodline(1)}>&gt;</button>
+
+                    { data && <div ref={d3Container} /> }
+                </div>
+            }
+            { 
+                showInfo && <div style={{...divStyle, alignItems:"center", display:"flex"}}>
+                    <MemberInfo props={nodeInfo}/>
+                </div> 
+            }
+        </>
     )
 }

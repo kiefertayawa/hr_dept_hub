@@ -12,6 +12,7 @@ const Login = () => {
     e.preventDefault()
     
     await login({username, password})
+    console.log(error)
     
   }
 
