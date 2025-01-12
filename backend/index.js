@@ -6,6 +6,8 @@ import memberRoutes from './routes/memberRouter.js'
 import searchRoutes from './routes/searchRouter.js'
 import userRoutes from './routes/userRoutes.js'
 
+import memberController from './controllers/memberController.js'
+
 // packages installed: express, mongoose, nodemon, dotenv, bcrypt, jsonwebtoken
 // npm run dev
 
@@ -27,9 +29,10 @@ app.use((req, res, next) => {
 
 mongoose.connect(MONGO_URI)
     .then(()=>{
+        // memberController.setBloodlines() only run once
         app.listen(PORT, () => {
             console.log(`Listening on port: ${PORT}`)
-        })
+        })  
     })
     .catch((error) => {
         console.log(error)

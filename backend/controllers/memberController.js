@@ -1,42 +1,43 @@
 import Member from '../models/memberModel.js'
 import mongoose from 'mongoose'
 
-// For sending family tree content
-const getFamilyTree = async (req, res) => {
-
-    const CRITERIA = {id:"3"}
-    // const CRITERIA = {ysesBatch:"Charter"}
+// Sets the bloodline of each member, run only once
+const setBloodlines = async () => {
 
     // Recursively gets all the descendants of a given node and pushes to a given bloodline array
-    const getAllDescendants = async (bloodlineArray, member) => {
+    const setAllDescendants = async (bloodlineID, parentID) => {
         
-        const children = await Member.find({parentId:member.id})
+        const children = await Member.find({parentId:parentID})
         
         if(children.length!==0){
             for (const child of children){
-                bloodlineArray.push(child)
-                await getAllDescendants(bloodlineArray, child)
+                await Member.findOneAndUpdate({id:child.id}, {bloodline:bloodlineID})
+                await setAllDescendants(bloodlineID, child.id)
             }
         }
 
     }
 
+    const charterMembers = await Member.find({ysesBatch:"Charter"})
+
+    for (const charterMember of charterMembers){
+        await Member.findOneAndUpdate({id:charterMember.id}, {bloodline:charterMember.id})
+        await setAllDescendants(charterMember.id, charterMember.id)
+    }  
+
+}
+
+// For sending family tree content
+const getFamilyTree = async (req, res) => {
+
     try {
-
+    
         const toSend = []
-        const charterMembers = await Member.find(CRITERIA)
-
-        // charterMembers.map(charterMember => {
-        //     // OMMIT _id FROM ALL
-        //     const {_id, ...rest} = charterMember
-        //     console.log(rest)
-        //     return({rest}) 
-        // })
+        const charterMembers = await Member.find({ysesBatch:"Charter"})
 
         // Grabs all the descendants of each charter member and puts them in a bloodline
         for (const charterMember of charterMembers){
-            const bloodline = [charterMember]
-            await getAllDescendants(bloodline, charterMember)
+            const bloodline = await Member.find({bloodline:charterMember.id})
             toSend.push(bloodline)
         }
         
@@ -46,7 +47,7 @@ const getFamilyTree = async (req, res) => {
 
     }catch (error){
         console.log(error)
-        res.status(400).json({error: error.message})
+        res.status(400).json(error)
     }
 }
 
@@ -131,7 +132,8 @@ const addMember = async (req, res) => {
 
 
 
-export default  { 
+export default  {
+    setBloodlines, 
     getFamilyTree, 
     getMember, 
     addMember,

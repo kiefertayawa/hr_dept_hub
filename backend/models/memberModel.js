@@ -6,6 +6,7 @@ const MemberSchema = new mongoose.Schema({
         required: true
     },
     parentId: String,
+    bloodline: String,
     name: String,
     collegeBatch: String,
     ysesBatch: String,
