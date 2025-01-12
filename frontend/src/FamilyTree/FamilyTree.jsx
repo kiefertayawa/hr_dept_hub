@@ -9,10 +9,19 @@ export default function FamilyTree() {
     const d3Container = useRef(null);
     const chartRef = useRef(new OrgChart());
 
-    const style = {
-            width: "100vw",
-            height: "100vh"
-        }
+    const divStyle = {
+        width: "100vw",
+        height: "90vh",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop:"10vh",
+    }
+
+    const btnStyle = {
+        position:"absolute",
+        top:"50%",
+        fontSize:"28px",
+    }
 
     function generateChart(index){
         if(data && d3Container.current){
@@ -25,8 +34,8 @@ export default function FamilyTree() {
                     return `ID:${data.data.id}<br>NAME:${data.data.name}<br>PARENT:${data.data.parentId}`
                     // insert <TreeNode data=data.data /> component here
                 })
-                .svgHeight((d) => style.height)
-                // .svgWidth((d) => style.width)
+                .svgHeight((d) => divStyle.height)
+                .svgWidth((d) => divStyle.width)
                 .expandAll()
                 .render()
         }
@@ -51,12 +60,10 @@ export default function FamilyTree() {
     }
 
     return (
-        <>
-            <button onClick={() => switchBloodline(-1)}>Left</button>
-            <button onClick={() => switchBloodline(1)}>Right</button>
-            {
-                data && <div ref={d3Container} style={style}/>
-            }
-        </>
+        <div style={divStyle}>
+            <button style={{...btnStyle, right:"95%"}} onClick={() => switchBloodline(-1)}>&lt;</button>
+            <button style={{...btnStyle, left:"95%"}} onClick={() => switchBloodline(1)}>&gt;</button>
+            { data && <div ref={d3Container} /> }
+        </div>
     )
 }
