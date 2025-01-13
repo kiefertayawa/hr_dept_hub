@@ -9,7 +9,6 @@ export default function FamilyTree() {
     const [index, setIndex] = useState(0)
     const d3Container = useRef(null);
     const chartRef = useRef(new OrgChart())
-    const [showInfo, setShow] = useState(false)
     const [nodeInfo, setNodeInfo] = useState(null)
 
     const divStyle = {
@@ -26,7 +25,7 @@ export default function FamilyTree() {
         fontSize:"28px",
     }
 
-    function generateChart(index){
+    function generateChart(){
         if(data && d3Container.current){
             chartRef.current
                 .container(d3Container.current)
@@ -39,7 +38,6 @@ export default function FamilyTree() {
                 })
                 .expandAll()
                 .onNodeClick((d)=>{
-                    setShow(true)
                     setNodeInfo({...d.data})
                     console.log(d)
                 })
@@ -54,7 +52,7 @@ export default function FamilyTree() {
         })
     }, [true]);
 
-    useLayoutEffect(()=>generateChart(index), [data, d3Container])
+    useLayoutEffect(()=>generateChart(), [data, d3Container])
     
     function switchBloodline(direction) {
         if(data && index+direction >= 0 && index+direction < data.length)
@@ -69,16 +67,17 @@ export default function FamilyTree() {
     return (
         <>
             { 
-                !showInfo && <div style={divStyle}>
+                <div style={{...divStyle, visibility: nodeInfo ? "hidden":"visible", position: nodeInfo ? "absolute" : "relative"}}>
                     <button style={{...btnStyle, right:"85%"}} onClick={() => switchBloodline(-1)}>&lt;</button>
                     <button style={{...btnStyle, left:"85%"}} onClick={() => switchBloodline(1)}>&gt;</button>
-
                     { data && <div ref={d3Container} /> }
                 </div>
             }
             { 
-                showInfo && <div style={{...divStyle, alignItems:"center", display:"flex"}}>
-                    <MemberInfo props={nodeInfo}/>
+                <div style={{...divStyle, visibility: nodeInfo ? "visible":"hidden", alignItems:"center", display:"flex"}}>
+                    {nodeInfo && <MemberInfo exit={setNodeInfo} 
+                    name={nodeInfo.name} ysesBatch={nodeInfo.ysesBatch} 
+                    collegeBatch={nodeInfo.collegeBatch}/>}
                 </div> 
             }
         </>
