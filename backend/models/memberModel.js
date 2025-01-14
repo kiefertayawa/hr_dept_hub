@@ -6,10 +6,10 @@ const MemberSchema = new mongoose.Schema({
         required: true
     },
     parentId: String,
-    bloodline: String,
     name: String,
     collegeBatch: String,
     ysesBatch: String,
+    bloodline: String,
 }, {timestamps: true})
 
 export default mongoose.model('Member', MemberSchema)

@@ -80,10 +80,10 @@ const getMember = async (req, res) => {
 
 // For adding new member
 const addMember = async (req, res) => {
-    const {id, parent, name, collegeBatch, ysesBatch} = req.body
+    const {id, parentId, name, collegeBatch, ysesBatch, bloodline} = req.body
 
     try {
-        const member = await Member.create({id, parent, name, collegeBatch, ysesBatch})
+        const member = await Member.create({id, parentId, name, collegeBatch, ysesBatch, bloodline})
         res.status(200).json(member)
     } catch (error) {
         console.log(error)
