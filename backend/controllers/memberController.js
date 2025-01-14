@@ -29,27 +29,44 @@ const setBloodlines = async () => {
 
 // For sending family tree content
 const getFamilyTree = async (req, res) => {
-
     try {
-    
-        const toSend = []
-        const charterMembers = await Member.find({ysesBatch:"Charter"})
+        const toSend = [];
+        const charterMembers = await Member.find({ ysesBatch: "Charter" });
 
         // Grabs all the descendants of each charter member and puts them in a bloodline
-        for (const charterMember of charterMembers){
-            const bloodline = await Member.find({bloodline:charterMember.id})
-            toSend.push(bloodline)
-        }
-        
-        // CORS
-        res.set('Access-Control-Allow-Origin', '*')
-        res.status(200).json(toSend)
+        for (const charterMember of charterMembers) {
+            const bloodline = await Member.find({ bloodline: charterMember.id });
 
-    }catch (error){
-        console.log(error)
-        res.status(400).json(error)
+            // Add mentor names dynamically to each member
+            const bloodlineWithMentors = await Promise.all(
+                bloodline.map(async (member) => {
+                    if (member.parentId) {
+                        const mentor = await Member.findOne({ id: member.parentId });
+                        return {
+                            ...member.toObject(),
+                            mentor: mentor ? mentor.name : null, // Dynamically add mentor's name
+                        };
+                    }
+                    return {
+                        ...member.toObject(),
+                        mentor: null, // If no parentId, no mentor
+                    };
+                })
+            );
+
+            toSend.push(bloodlineWithMentors);
+        }
+
+        // CORS
+        res.set('Access-Control-Allow-Origin', '*');
+        res.status(200).json(toSend);
+
+    } catch (error) {
+        console.error(error);
+        res.status(400).json(error);
     }
-}
+};
+
 
 
 

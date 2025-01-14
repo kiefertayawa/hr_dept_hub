@@ -76,8 +76,10 @@ export default function FamilyTree() {
             { 
                 <div style={{...divStyle, visibility: nodeInfo ? "visible":"hidden", alignItems:"center", display:"flex"}}>
                     {nodeInfo && <MemberInfo exit={setNodeInfo} 
-                    name={nodeInfo.name} ysesBatch={nodeInfo.ysesBatch} 
-                    collegeBatch={nodeInfo.collegeBatch}/>}
+                    name={nodeInfo.name} 
+                    ysesBatch={nodeInfo.ysesBatch} 
+                    collegeBatch={nodeInfo.collegeBatch}
+                    mentor={nodeInfo.mentor} />}  {/* Add mentor info */}
                 </div> 
             }
         </>
