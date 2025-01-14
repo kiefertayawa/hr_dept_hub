@@ -3,9 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 import memberRoutes from './routes/memberRouter.js'
-import searchRoutes from './routes/searchRouter.js'
 import userRoutes from './routes/userRoutes.js'
-import emailRoutes from './routes/emailRouter.js'
 
 import memberController from './controllers/memberController.js'
 
@@ -41,5 +39,3 @@ mongoose.connect(MONGO_URI)
 
 app.use('/api/member', memberRoutes)
 app.use('/api/user', userRoutes)
-app.use('/api/search', searchRoutes)
-app.use('/api/email', emailRoutes)
