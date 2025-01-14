@@ -11,16 +11,16 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}
                     exit(null);
                 }}
             >
-                X
+            ✖
             </button>
             <div className="image-container">
                 <img src={memberImg} className="member-image" />
             </div>
             <div className="fields-container">
-                <InfoField label={"Name"} data={name} />
-                <InfoField label={"YSES Batch"} data={ysesBatch} />
-                <InfoField label={"College Batch"} data={collegeBatch} />
-                {mentor && <InfoField label={"Mentor"} data={mentor} />} {/* Don't render if node is a charter member */}
+            <InfoField label={"NAME"} data={name} labelClass="custom-label" />
+            <InfoField label={"YSES BATCH"} data={ysesBatch} labelClass="custom-label" />
+            <InfoField label={"COLLEGE BATCH"} data={collegeBatch} labelClass="custom-label" />
+            {mentor && <InfoField label={"MENTOR"} data={mentor} labelClass="custom-label" />} {/* Don't render if node is a charter member */}
             </div>
             {/* x button */}
             {/* mentor / parent */}

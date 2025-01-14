@@ -13,15 +13,27 @@
     margin-left: 10px;
 }
 
+.custom-label {
+    font-size: 130%;
+    font-weight: bold; 
+    color: #003366; 
+    letter-spacing: -1px;
+    font-family: 'Arial', sans-serif;  
+    text-align: left;
+    margin-left: 40px;
+    margin-bottom: 7px;
+}
+
 .info {
     max-width: 90%;
     padding: 0.01%;
-    border-radius: 40px;
+    border-radius: 60px;
     margin-left: 5%;
     margin-right: 5%;
+    letter-spacing: -0.7px;
     border: none;
     color: white;
     background-color: #003366;
     font-size: 150%;
-    opacity: 0.85;
+    opacity: 0.90;
 }
