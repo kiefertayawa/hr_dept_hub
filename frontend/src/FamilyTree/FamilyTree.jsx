@@ -3,6 +3,8 @@ import * as d3 from 'd3';
 import { OrgChart } from 'd3-org-chart';
 import MemberInfo from './MemberInfo';
 import './FamilyTree.css';
+import leftArrow from "../assets/arrow-left.png";
+import rightArrow from "../assets/arrow-right.png";
 
 export default function FamilyTree() {
     const [data, setData] = useState(null);
@@ -53,8 +55,8 @@ export default function FamilyTree() {
     return (
         <>
             <div className={`chart-container ${nodeInfo ? 'hidden' : ''}`}>
-                <button className="nav-button left" onClick={() => switchBloodline(-1)}>&lt;</button>
-                <button className="nav-button right" onClick={() => switchBloodline(1)}>&gt;</button>
+                <button className="nav-button left" onClick={() => switchBloodline(-1)}><img src={leftArrow} alt="<" /></button>
+                <button className="nav-button right" onClick={() => switchBloodline(1)}><img src={rightArrow} alt=">" /></button>
                 {data && <div ref={d3Container} className="d3-content" />}
             </div>
             <div className={`info-container ${nodeInfo ? 'visible' : 'hidden'}`}>
