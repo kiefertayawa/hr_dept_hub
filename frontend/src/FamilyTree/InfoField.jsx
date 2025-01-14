@@ -4,7 +4,7 @@ export default function InfoField({label, data}){
     
     const containerStyle = {
         width: "100%",
-        height: "10%",
+        height: "15%",
         marginTop: "10%",
         color: "black",
     }

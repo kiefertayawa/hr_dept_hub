@@ -73,7 +73,7 @@ const getFamilyTree = async (req, res) => {
 
 
 // For getting specific member
-const getMember = async (req, res) => {
+const getMemberById = async (req, res) => {
     // Retrieve id in parameters
     const {id} =  req.params
 
@@ -109,6 +109,27 @@ const addMember = async (req, res) => {
 }
 
 
+// For updating member details
+const updateMemberById = async (req, res) => {
+    const {id} =  req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Member does not exist'})
+    }
+
+    const updatedMember = await Member.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+    
+    if (!updatedMember) {
+        return res.status(400).json({error: 'Member does not exist'})
+    }
+
+    res.status(200).json(updatedMember)  
+}
+
+
+
 // // For deleting a single member
 // const deleteMember = async (req, res) => {
 //     const {id} =  req.params
@@ -127,33 +148,13 @@ const addMember = async (req, res) => {
 // }
 
 
-// // For updating member details
-// const updateMember = async (req, res) => {
-//     const {id} =  req.params
-
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//         return res.status(404).json({error: 'Member does not exist'})
-//     }
-
-//     const member = await Member.findOneAndUpdate({_id: id}, {
-//         ...req.body
-//     })
-    
-//     if (!member) {
-//         return res.status(400).json({error: 'Member does not exist'})
-//     }
-
-//     res.status(200).json(member)  
-// }
-
-
 
 
 export default  {
     setBloodlines, 
     getFamilyTree, 
-    getMember, 
+    getMemberById, 
     addMember,
+    updateMemberById
     // deleteMember,
-    // updateMember
 }

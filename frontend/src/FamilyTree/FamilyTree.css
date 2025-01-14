@@ -1,0 +1,42 @@
+.chart-container {
+    width: 100vw;
+    height: 90vh;
+    margin-top: 10vh;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    visibility: visible;
+}
+
+.chart-container.hidden {
+    visibility: hidden;
+    position: absolute;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    font-size: 28px;
+}
+
+.nav-button.left {
+    right: 85%;
+}
+
+.nav-button.right {
+    left: 85%;
+}
+
+.info-container {
+    width: 100vw;
+    height: 90vh;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.info-container.visible {
+    visibility: visible;
+}

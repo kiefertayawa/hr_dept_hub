@@ -1,0 +1,55 @@
+.member-container {
+    display: flex;
+    width: 80%;
+    height: 90%;
+    background: whitesmoke;
+    border-radius: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.exit-button {
+    color: black;
+    font-weight: bold;
+    font-size: 36px;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    background: none;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+}
+
+.image-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    height: 100%;
+    width: 50%;
+}
+
+.member-image {
+    height: 60%;
+    width: auto;
+    max-height: 100%;
+    max-width: 80%;
+    border-radius: 40px;
+    position: relative;
+    top: 15%;
+}
+
+.fields-container { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    height: 80%;
+    width: 50%;
+}
+
