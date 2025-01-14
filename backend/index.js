@@ -14,7 +14,9 @@ import uploadRouter from './routes/uploadRouter.js'
 // packages installed: express, mongoose, nodemon, dotenv, bcrypt, jsonwebtoken, cloudinary, multer
 // npm run dev
 
-dotenv.configDotenv({path:'../credentials.env'})
+// dotenv.configDotenv({path:'../credentials.env'})
+dotenv.configDotenv({path:'/.env'})         // Change path of .env file to inside the backend folder
+
 const MONGO_URI = process.env.MONGO_URI
 const PORT = 4000 //process.env.PORT
 

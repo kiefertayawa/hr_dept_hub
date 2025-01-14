@@ -11,8 +11,6 @@ const uploadMemberImage = async (req, res) => {
   try {
     console.log('Request body:', req.body);
     console.log('Uploaded file:', req.file);
-    console.log(process.env.CLOUDINARY_API_SECRET); // Should not be undefined if the path is correct
-
 
     // Default placeholder image URL
     const placeholderImageUrl = '/pfp-placeholder.jpeg'; // location of placeholder image

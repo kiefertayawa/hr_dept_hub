@@ -2,7 +2,7 @@ import User from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 
 
-// credentials.env -> TOKEN=jpadhrdepthub2025
+// .env -> TOKEN=jpadhrdepthub2025
 const createToken = (_id) => {
     return jwt.sign({_id}, process.env.TOKEN, { expiresIn: '3d'})
 

@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-// Load environment variables (adjust the path to your actual credentials.env file)
+// Moved the .env file inside the backend folder 
 dotenv.config({ path: './.env' });
 
 const cloudinaryConfig = {
