@@ -1,0 +1,54 @@
+.tree-node {
+    width: 400px;
+    height: 350px;
+    background-image: url('../assets/nodedesign2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 90px; 
+    box-sizing: border-box;
+}
+
+.circle-image {
+    width: 70px;
+    height: 70px;
+    background-image: url('../assets/default pic.jpeg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    margin: 0 auto 15px auto; 
+}
+
+
+.tree-node p:first-of-type {
+    margin-top: 10px; 
+}
+
+
+.tree-node p {
+    font-size: 14px;
+    letter-spacing: -0.4px;
+    margin: 5px 0;
+    word-wrap: break-word;
+}
+
+
+.tree-node p span.label {
+    font-weight: bold;
+    color: #ffffff; 
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+
+.tree-node p span.data {
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 14px;
+}

@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { OrgChart } from 'd3-org-chart';
 import MemberInfo from './MemberInfo';
 import './FamilyTree.css';
+import TreeNode from './TreeNode';
 
 export default function FamilyTree() {
     const [data, setData] = useState(null);
@@ -12,24 +13,32 @@ export default function FamilyTree() {
     const [nodeInfo, setNodeInfo] = useState(null);
 
     function generateChart() {
-        if (data && d3Container.current){
+        if (data && d3Container.current) {
             chartRef.current
                 .container(d3Container.current)
                 .data(data[index])
-                .nodeWidth((d) => 200)
-                .nodeHeight((d) => 120)
-                .nodeContent(data => {
-                    return `ID:${data.data.id}<br>NAME:${data.data.name}<br>PARENT:${data.data.parentId}`
-                    // insert <TreeNode data=data.data /> component here
+                .nodeWidth(() => 400)
+                .nodeHeight(() => 350)  
+                .nodeContent((d) => {
+                    const { id, name, parentId } = d.data;
+                    return `
+                        <div class="tree-node">
+                            <div class="circle-image"></div>
+                            <p><span class="label">ID:</span> <span class="data">${id}</span></p>
+                            <p><span class="label">Name:</span> <span class="data">${name}</span></p>
+                            <p><span class="label">Parent:</span> <span class="data">${parentId}</span></p>
+                        </div>
+                    `;
                 })
                 .expandAll()
-                .onNodeClick((d)=>{
-                    setNodeInfo({...d.data})
-                    console.log(d)
+                .onNodeClick((d) => {
+                    setNodeInfo({ ...d.data });
                 })
                 .render();
         }
     }
+    
+    
 
     useEffect(() => {
         d3.json('http://localhost:4000/api/member/getAll')
