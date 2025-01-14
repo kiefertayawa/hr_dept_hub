@@ -96,6 +96,7 @@ const getMemberById = async (req, res) => {
 
 
 // For adding new member
+// (primitive adding of new member; updated one is in upload router)
 const addMember = async (req, res) => {
     const {id, parentId, name, collegeBatch, ysesBatch, bloodline} = req.body
 
