@@ -10,6 +10,7 @@ const MemberSchema = new mongoose.Schema({
     collegeBatch: String,
     ysesBatch: String,
     bloodline: String,
+    imageUrl: String,           // Added image url attribute
 }, {timestamps: true})
 
 export default mongoose.model('Member', MemberSchema)
