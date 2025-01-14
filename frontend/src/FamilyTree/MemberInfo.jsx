@@ -1,7 +1,7 @@
 import InfoField from "./InfoField"
 import memberImg from '../assets/default pic.jpeg'
 
-export default function MemberInfo({exit, name, ysesBatch, collegeBatch}){
+export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}){
 
     const containerStyle = {
         display: "flex",
@@ -62,6 +62,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch}){
                 <InfoField label={"Name"} data={name}/>
                 <InfoField label={"YSES Batch"} data={ysesBatch}/>
                 <InfoField label={"College Batch"} data={collegeBatch}/>
+                {mentor && <InfoField label={"Mentor"} data={mentor} />} {/* Don't render if node is a charter member */}
             </div>
             {/* x button */}
             {/* mentor / parent */}
