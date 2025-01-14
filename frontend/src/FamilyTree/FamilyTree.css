@@ -15,11 +15,16 @@
 
 .nav-button {
     position: absolute;
-    height:85px;
-    border-radius: 50px;
+    height:95px;
+    border-radius: 30%;
     top: 50%;
     font-size: 28px;
     background-color: #003366;
+}
+
+.nav-button img {
+    width:25px;
+    height:25px;
 }
 
 .nav-button:hover { 
