@@ -17,6 +17,12 @@
     position: absolute;
     top: 50%;
     font-size: 28px;
+    background-color: #003366;
+}
+
+.nav-button:hover { 
+    background: #00509e;
+    outline: none;
 }
 
 .nav-button.left {
