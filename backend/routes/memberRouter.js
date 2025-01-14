@@ -7,18 +7,19 @@ const router = express.Router()
 router.get('/getAll', memberController.getFamilyTree)
 
 // Get single member
-router.get('/:id', memberController.getMember)
+router.get('/get-member-by-id/:id', memberController.getMemberById)
 
 
 // POST new member
-router.post('/', memberController.addMember)
+router.post('/add-new-member', memberController.addMember)
+
+
+// PATCH member detail
+router.patch('/update-member-by-id/:id', memberController.updateMemberById)
 
 
 // // DELETE a single member
 // router.delete('/:id', memberController.deleteMember)
-
-// // PATCH member detail
-// router.patch('/:id', memberController.updateMember)
 
 
 
