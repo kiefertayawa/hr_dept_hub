@@ -20,9 +20,6 @@ export default function Search({data, switchBloodline, chartRef}){
             });
         });
         setSuggestions(local)
-        suggestions.forEach(suggestion => {
-            console.log(suggestion)
-        });
     }
 
     function searchClick(member){
