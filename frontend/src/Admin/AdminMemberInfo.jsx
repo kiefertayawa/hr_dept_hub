@@ -11,7 +11,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}
     
     return (
         <>
-        {!showAddMember? (
+        {!addMember? (
             <div className="containers-container">
             
                 <div className="buttons-container"> 
