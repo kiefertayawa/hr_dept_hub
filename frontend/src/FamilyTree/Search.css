@@ -1,0 +1,111 @@
+.search-container {
+    position: relative;
+    margin-left: auto;  
+    margin-right: 20px; 
+    width: fit-content; 
+}
+
+
+.search-icon {
+    position: absolute;
+    top: 68%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #ffffff; 
+    transition: color 0.3s ease; 
+}
+
+.search-icon.input-typed {
+    color: #098bcc; 
+}
+
+
+.search-input {
+    height: 40px;
+    width: 320px;
+    font-size: 20px;
+    background-color: #003366;
+    border: #ffffff solid 0.5px;
+    border-radius: 40px;
+    padding-top: 4px;
+    margin-top: 20px;
+    padding-left: 35px;
+    margin-left: 0px;
+    letter-spacing: -0.5px;
+    box-sizing: border-box;
+    color: white;  
+    transition: all 0.3s ease; 
+}
+
+.search-input::placeholder {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.search-input:focus {
+    background-color: #074279;  
+    border: 2px solid #098bcc; 
+    outline: none; 
+}
+
+.search-input:focus::placeholder {
+    visibility: hidden;
+}
+
+
+.suggestion-container {
+    width: 295px;
+    max-height: 320px;
+    margin-top: 5px;
+    margin-left: 13px;
+    position: absolute;
+    z-index: 2;
+    overflow-y: scroll;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin; 
+    scrollbar-color: #098bcc #ffffff; 
+}
+
+.suggestion-container::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.suggestion-container::-webkit-scrollbar-track {
+    background: #ffffff; 
+    border-radius: 10px; 
+}
+
+.suggestion-container::-webkit-scrollbar-thumb {
+    background-color: #098bcc; 
+    border-radius: 10px; 
+    border: 2px solid #ffffff; 
+}
+
+.suggestion-container::-webkit-scrollbar-thumb:hover {
+    background-color: #007ab8; 
+}
+
+
+.suggestion-button {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: #074279;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: -0.6px;
+    box-sizing: border-box;
+}
+
+.suggestion-button:hover {
+    background: #28bae7;
+    color: #202020;
+}
