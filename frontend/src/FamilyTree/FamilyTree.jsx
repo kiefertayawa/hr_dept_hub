@@ -4,6 +4,9 @@ import { OrgChart } from 'd3-org-chart';
 import MemberInfo from './MemberInfo';
 import './FamilyTree.css';
 import TreeNode from './TreeNode';
+import leftArrow from '../assets/arrow-left.png'
+import rightArrow from '../assets/arrow-right.png'
+import Search from './Search';
 
 export default function FamilyTree() {
     const [data, setData] = useState(null);
@@ -32,6 +35,7 @@ export default function FamilyTree() {
                 })
                 .expandAll()
                 .onNodeClick((d) => {
+                    console.log(d.data)
                     setNodeInfo({ ...d.data });
                 })
                 .render();
@@ -49,21 +53,25 @@ export default function FamilyTree() {
 
     useLayoutEffect(() => generateChart(), [data, d3Container]);
     
-    function switchBloodline(direction) {
-        if (data && index+direction >= 0 && index+direction < data.length)
+    function switchBloodline(index, id=0) {
+        if (data && index >= 0 && index < data.length)
         {
-            setIndex(index+direction)
-            chartRef.current.data(data[index+direction]).expandAll().render()
+            setIndex(index)
+            chartRef.current.data(data[index]).expandAll().render()
             // chartRef.current.setExpanded("71").setCentered("71").render()
             // console.log(index+direction)
+        }
+        if (id){
+            chartRef.current.setExpanded(id).setCentered(id).render()
         }
     }
 
     return (
         <>
             <div className={`chart-container ${nodeInfo ? 'hidden' : ''}`}>
-                <button className="nav-button left" onClick={() => switchBloodline(-1)}><img src={leftArrow} alt="<" /></button>
-                <button className="nav-button right" onClick={() => switchBloodline(1)}><img src={rightArrow} alt=">" /></button>
+                <Search data={data} switchBloodline={switchBloodline} chartRef={chartRef}/>
+                <button className="nav-button left" onClick={() => switchBloodline(index-1)}><img src={leftArrow} alt="<" /></button>
+                <button className="nav-button right" onClick={() => switchBloodline(index+1)}><img src={rightArrow} alt=">" /></button>
                 {data && <div ref={d3Container} className="d3-content" />}
             </div>
             <div className={`info-container ${nodeInfo ? 'visible' : 'hidden'}`}>

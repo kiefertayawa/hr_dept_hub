@@ -22,8 +22,6 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}
             <InfoField label={"COLLEGE BATCH"} data={collegeBatch} labelClass="custom-label" />
             {mentor && <InfoField label={"MENTOR"} data={mentor} labelClass="custom-label" />} {/* Don't render if node is a charter member */}
             </div>
-            {/* x button */}
-            {/* mentor / parent */}
         </div>
     )
 }
