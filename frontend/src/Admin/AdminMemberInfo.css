@@ -9,6 +9,7 @@
 }
 
 .member-container {
+    margin-top: 60px;
     display: flex;
     width: 70%;
     height: 80%;
@@ -73,37 +74,33 @@
 }
 
 .buttons-container img{
-    width:33px;
-    height:33px;
-}
-
-/* SORRY SA KUNG SINO MAGAAYOS DI KO MAGETS */
-
-.buttons-container button{  
-    width: 30%;
-    height: 70%;
-    background-color: transparent;
-    border-radius: 30px;
-    justify-content: center;
-    align-items: center;
+    width:40px;
+    height:40px;
 }
 
 .buttons-container{
     background: white;
-    border-radius: 50px;
-    width:109px;
-    height:50px;
-    transform: translateX(-50%);
+    border-radius: 30px;
     display: flex;
-    position: relative;
     align-items: center;
-    align-content: center;
-    justify-content: center;
-    justify-items: center;
-    left: 675px;
-    gap: 8px;
+    justify-content: center; 
+    gap: 20px; 
+    position: absolute;
+    top: 130px;
+    right: 290px;
+    width: 135px; 
+    height: 60px; 
 }
 
-.add-btn img {
-    left:0px;
+.buttons-container button{  
+    background-color: white;
+    border: none; 
+    border-radius: 30px;
+    width: 40px;
+    height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
 }
