@@ -11,7 +11,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}
         <div className="containers-container">
             
             <div className="buttons-container"> 
-                <button className="add-btn" onClick={()=>{addMember}}><img src={addButton} alt="+"/></button> 
+                <button className="add-btn" onClick={()=>addMember()}><img src={addButton} alt="+"/></button> 
                 <button className="remove-btn" onClick=""><img src={removeButton} alt="-"/></button>
             </div>
             
