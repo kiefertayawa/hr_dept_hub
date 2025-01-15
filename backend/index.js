@@ -1,16 +1,22 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import memberRoutes from './routes/memberRouter.js'
 import userRoutes from './routes/userRoutes.js'
 
 import memberController from './controllers/memberController.js'
 
-// packages installed: express, mongoose, nodemon, dotenv, bcrypt, jsonwebtoken
+import uploadRouter from './routes/uploadRouter.js'
+
+// packages installed: express, mongoose, nodemon, dotenv, bcrypt, jsonwebtoken, cloudinary, multer
 // npm run dev
 
-dotenv.configDotenv({path:'../credentials.env'})
+// dotenv.configDotenv({path:'../credentials.env'})
+dotenv.configDotenv({path:'/.env'})         // Change path of .env file to inside the backend folder
+
 const MONGO_URI = process.env.MONGO_URI
 const PORT = 4000 //process.env.PORT
 
@@ -37,5 +43,12 @@ mongoose.connect(MONGO_URI)
         console.log(error)
     })
 
+
+// Serve static files (e.g., pfp-placeholder images)
+const __filename = fileURLToPath(import.meta.url);
+app.use(express.static(path.join(path.dirname(__filename), 'public')));
+
+
 app.use('/api/member', memberRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/upload', uploadRouter);
