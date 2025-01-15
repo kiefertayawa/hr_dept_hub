@@ -1,7 +1,7 @@
 import defaultPic from "../assets/default pic.jpeg"
 import uploadIcon from "../assets/upload icon.png"
 
-export default function addMember(){
+export default function AddMember(){
  return (
          <>
          <div className="form">
