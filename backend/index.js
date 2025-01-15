@@ -34,7 +34,10 @@ app.use((req, res, next) => {
 
 mongoose.connect(MONGO_URI)
     .then(()=>{
-        // memberController.setBloodlines() only run once
+
+        // only run once
+        // memberController.setBloodlines() 
+        
         app.listen(PORT, () => {
             console.log(`Listening on port: ${PORT}`)
         })  

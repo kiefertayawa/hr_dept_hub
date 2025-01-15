@@ -2,17 +2,19 @@ import Member from '../models/memberModel.js'
 import mongoose from 'mongoose'
 
 // Sets the bloodline of each member, run only once
+// Modified to add mentor's name to each member object
 const setBloodlines = async () => {
 
     // Recursively gets all the descendants of a given node and pushes to a given bloodline array
-    const setAllDescendants = async (bloodlineID, parentID) => {
+    const setAllDescendants = async (parentName, parentID) => {
         
         const children = await Member.find({parentId:parentID})
         
         if(children.length!==0){
             for (const child of children){
-                await Member.findOneAndUpdate({id:child.id}, {bloodline:bloodlineID})
-                await setAllDescendants(bloodlineID, child.id)
+                // await Member.findOneAndUpdate({id:child.id}, {bloodline:bloodlineID})
+                await Member.findOneAndUpdate({id:child.id}, {mentor:parentName})
+                await setAllDescendants(child.name, child.id)
             }
         }
 
@@ -21,8 +23,9 @@ const setBloodlines = async () => {
     const charterMembers = await Member.find({ysesBatch:"Charter"})
 
     for (const charterMember of charterMembers){
-        await Member.findOneAndUpdate({id:charterMember.id}, {bloodline:charterMember.id})
-        await setAllDescendants(charterMember.id, charterMember.id)
+        // await Member.findOneAndUpdate({id:charterMember.id}, {bloodline:charterMember.id})
+        await Member.findOneAndUpdate({id:charterMember.id}, {mentor:null})
+        await setAllDescendants(charterMember.name, charterMember.id)
     }  
 
 }
@@ -37,24 +40,24 @@ const getFamilyTree = async (req, res) => {
         for (const charterMember of charterMembers) {
             const bloodline = await Member.find({ bloodline: charterMember.id });
 
-            // Add mentor names dynamically to each member
-            const bloodlineWithMentors = await Promise.all(
-                bloodline.map(async (member) => {
-                    if (member.parentId) {
-                        const mentor = await Member.findOne({ id: member.parentId });
-                        return {
-                            ...member.toObject(),
-                            mentor: mentor ? mentor.name : null, // Dynamically add mentor's name
-                        };
-                    }
-                    return {
-                        ...member.toObject(),
-                        mentor: null, // If no parentId, no mentor
-                    };
-                })
-            );
+            // // Add mentor names dynamically to each member
+            // const bloodlineWithMentors = await Promise.all(
+            //     bloodline.map(async (member) => {
+            //         if (member.parentId) {
+            //             const mentor = await Member.findOne({ id: member.parentId });
+            //             return {
+            //                 ...member.toObject(),
+            //                 mentor: mentor ? mentor.name : null, // Dynamically add mentor's name
+            //             };
+            //         }
+            //         return {
+            //             ...member.toObject(),
+            //             mentor: null, // If no parentId, no mentor
+            //         };
+            //     })
+            // );
 
-            toSend.push(bloodlineWithMentors);
+            toSend.push(bloodline);
         }
 
         // CORS
