@@ -15,11 +15,12 @@
 
 .nav-button {
     position: absolute;
-    height:95px;
-    border-radius: 30%;
-    top: 50%;
-    font-size: 28px;
+    height:80px;
+    border-radius: 35px;
+    top: 45%;
+    font-size: 22px;
     background-color: #003366;
+    opacity: 80%;
 }
 
 .nav-button img {
@@ -33,11 +34,11 @@
 }
 
 .nav-button.left {
-    right: 85%;
+    right: 93%;
 }
 
 .nav-button.right {
-    left: 85%;
+    left: 93%;
 }
 
 .info-container {

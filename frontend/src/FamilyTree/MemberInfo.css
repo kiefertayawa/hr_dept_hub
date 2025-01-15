@@ -39,13 +39,14 @@
 }
 
 .member-image {
-    height: 60%;
+    height: 80%;
     width: auto;
     max-height: 100%;
-    max-width: 80%;
+    max-width: 100%;
     border-radius: 40px;
     position: relative;
-    top: 15%;
+    top: 10%;
+    left: 3%;
 }
 
 .fields-container { 
@@ -55,7 +56,8 @@
     align-items: center;
     text-align: center;
     padding: 0px;
-    height: 80%;
-    width: 50%;
+    height: 70%;
+    width: 47%;
+    margin-top: 40px;
+    margin-left: 0px;
 }
-
