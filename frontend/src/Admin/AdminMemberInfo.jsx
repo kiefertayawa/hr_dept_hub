@@ -3,6 +3,7 @@ import memberImg from "../assets/default pic.jpeg";
 import "./AdminMemberInfo.css";
 import addButton from "../assets/add icon.png"
 import removeButton from "../assets/remove icon.png"
+import { addMember } from "./AddMember"
 
 export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}){
     return (
@@ -10,7 +11,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}
         <div className="containers-container">
             
             <div className="buttons-container"> 
-                <button className="add-btn" onClick=""><img src={addButton} alt="+"/></button> 
+                <button className="add-btn" onClick={()=>{addMember}}><img src={addButton} alt="+"/></button> 
                 <button className="remove-btn" onClick=""><img src={removeButton} alt="-"/></button>
             </div>
             
