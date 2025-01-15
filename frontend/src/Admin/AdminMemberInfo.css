@@ -39,7 +39,6 @@
     line-height: 40px; 
 }
 
-
 .image-container {
     justify-content: center;
     align-items: center;
@@ -47,10 +46,11 @@
     padding: 0px;
     height: 100%;
     width: 50%;
+    position: relative;
 }
 
 .member-image {
-    height: 80%;
+    height: 74%;
     width: auto;
     max-height: 100%;
     max-width: 100%;
@@ -60,6 +60,34 @@
     left: 3%;
 }
 
+.upload-section {
+    position: absolute;
+    bottom: 5.5%;
+    left: 38%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-icon {
+    width: 42px;
+    height: 42px;
+}
+
+.upload-pic-button {
+    position: absolute;
+    bottom: 5%;
+    left: 46%;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    height: 50px;
+}
+
 .fields-container { 
     display: flex;
     flex-direction: column;
@@ -67,10 +95,24 @@
     align-items: center;
     text-align: center;
     padding: 0px;
-    height: 70%;
+    height: 60%;
     width: 47%;
-    margin-top: 40px;
+    margin-top: 45px;
     margin-left: 0px;
+}
+
+.save-button {
+    position: absolute;
+    bottom: 5%;
+    left: 70%;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    height: 50px;
 }
 
 .buttons-container img{
