@@ -1,13 +1,15 @@
+
+/* whole card including the add and remove */
 .containers-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height:90vh;
-    width:300vh;
-    gap: 10px;
+    height:80vh;
+    width:80%;
 }
 
+/* whole card */
 .member-container {
     margin-top: 60px;
     display: flex;
@@ -21,6 +23,7 @@
     position: relative;
 }
 
+/* exit button */
 .exit-button {
     color: rgb(255, 255, 255);
     font-weight: bold;
@@ -30,15 +33,16 @@
     left: 2%;
     background: #003366;
     padding: 0px;
-    border: 0px solid transparent; 
-    cursor: pointer;
+    border: 0px solid transparent;
     width: 42px;  
     height: 42px;  
     border-radius: 50%; 
     text-align: center;  
     line-height: 40px; 
+    z-index: 5;
 }
 
+/* left hand side */
 .image-container {
     justify-content: center;
     align-items: center;
@@ -63,10 +67,9 @@
 .upload-section {
     position: absolute;
     bottom: 5.5%;
-    left: 38%;
+    left: 32%;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .upload-icon {
@@ -77,30 +80,57 @@
 .upload-pic-button {
     position: absolute;
     bottom: 5%;
-    left: 46%;
-    background-color: #003366;
-    color: white;
+    left: 43%;
+    background-color: #e5e6e8;
+    color: #003366;
     border: none;
     border-radius: 40px;
     padding: 10px 20px;
-    cursor: pointer;
     font-size: 20px;
     height: 50px;
 }
 
 .fields-container { 
+    /* border: 2px solid #003366; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0px;
-    height: 60%;
-    width: 47%;
-    margin-top: 45px;
-    margin-left: 0px;
+    box-sizing: border-box;
+    height: 75%;
+    margin: 0 5 0 0;
+    gap:1px;
+    text-align: left;
 }
 
+input {
+    text-align: left;
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    height: 5%;
+    background-color: #e5e6e8;
+}
+
+input:focus {
+    outline: 1px solid #003366;
+}
+
+input:disabled {
+    color: #e5e6e8;
+    background-color: #003366;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    text-align: left;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+/* for save button */
 .save-button {
     position: absolute;
     bottom: 5%;
@@ -110,11 +140,22 @@
     border: none;
     border-radius: 40px;
     padding: 10px 20px;
-    cursor: pointer;
     font-size: 20px;
     height: 50px;
 }
 
+button {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.save-button:hover, .upload-pic-button:hover {
+    color: white;
+    outline: none;
+    background: #00509e;
+}
+
+/* for the add and remove */
 .buttons-container img{
     width:40px;
     height:40px;
@@ -128,8 +169,8 @@
     justify-content: center; 
     gap: 20px; 
     position: absolute;
-    top: 130px;
-    right: 290px;
+    top: 160px;
+    right: 418px;
     width: 135px; 
     height: 60px; 
 }
@@ -143,6 +184,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     padding: 0;
 }

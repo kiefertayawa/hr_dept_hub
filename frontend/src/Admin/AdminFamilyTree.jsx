@@ -80,7 +80,9 @@ export default function Admin_FamilyTree() {
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
                 collegeBatch={nodeInfo.collegeBatch}
-                mentor={nodeInfo.mentor} />}  {/* Add mentor info */}
+                mentor={nodeInfo.mentor} 
+                level={nodeInfo.level}
+                />}  {/* Add mentor and level info */}
             </div> 
         </>
     )
