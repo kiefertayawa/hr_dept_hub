@@ -11,8 +11,8 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
     const [newCollegeBatch, setCollegeBatch] = useState(collegeBatch);
-    const [newLevel, setLevel] = useState(Number(level));
-    
+    // const [newLevel, setLevel] = useState(Number(level));
+    const [newLevel, setLevel] = useState(Number(1));
     
     return (
         <>
@@ -47,7 +47,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                             <label>NAME</label><input type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
                             <label>YSES BATCH</label><input type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
                             <label>COLLEGE BATCH</label><input type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>
-                            <label>LEVEL</label><input type="number" id="level" value={/*newLevel*/4232} onChange={(e) => setLevel(e.target.value)}/>
+                            <label>LEVEL</label><input type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
                             
                             <button type="submit" className="save-button">SAVE</button>
                         {/* </form> */}
