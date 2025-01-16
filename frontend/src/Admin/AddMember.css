@@ -78,10 +78,11 @@
 .mentor-name {
     font-weight: bold;
     color: #333;
+    margin-bottom: 15px;
 }
 
 label, p {
-    /* padding-top: 10px; */
+    margin-top: 5px;
     font-weight: 600;
     margin-bottom: 5px;
     color: #003366;
@@ -117,6 +118,7 @@ input{
     padding-bottom: 10px;
     text-align: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .save-btn {
@@ -129,6 +131,8 @@ input{
     transition: background-color 0.3s ease;
     width:125px;
     height:36px;
+    margin: 0 auto;
+    margin-top: 15px;;
 }
 
 .save-btn:hover {
