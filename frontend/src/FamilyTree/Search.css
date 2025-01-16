@@ -53,12 +53,11 @@
     visibility: hidden;
 }
 
-
 .suggestion-container {
     width: 295px;
     max-height: 320px;
-    margin-top: 5px;
-    margin-left: 13px;
+    margin-top: 0px;
+    margin-left: 2px;
     position: absolute;
     z-index: 2;
     overflow-y: scroll;
@@ -87,7 +86,6 @@
 .suggestion-container::-webkit-scrollbar-thumb:hover {
     background-color: #007ab8; 
 }
-
 
 .suggestion-button {
     width: 100%;
