@@ -1,5 +1,5 @@
 # HR Department Hub - Version 1.0
-The HR Department Hub is a centralized platform designed for the Human Resources (HR) Department and residents of the Young Software Engineer Society (YSES). It enhances communication, collaboration, and connection within the organization by providing essential HR services.
+The HR Department Hub is a centralized platform designed for the Human Resources (HR) Department and residents of the **Young Software Engineer Society (YSES)**. It enhances communication, collaboration, and connection within the organization by providing essential HR services.
 
 ## Key Features
 1. YSES Family Tree
@@ -7,7 +7,7 @@ The HR Department Hub is a centralized platform designed for the Human Resources
 2. Anonymous HR Chat
    - To provide a secure and confidential channel for residents to raise HR-related questions or concerns.
 
-## User Classes and Characteristics 
+## User Guidelines
 1. Probationary Members/Alumni
    - Partial access to the resident information database
    - Can access trainee information center
