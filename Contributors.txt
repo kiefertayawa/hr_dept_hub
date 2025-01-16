@@ -1,0 +1,26 @@
+# Contributors and Roles
+
+## Project Lead
+- Sigmund Oscar Baybay
+
+## Frontend Team Lead
+- Kiefer Tayawa
+
+## Backend Team Lead
+- Ralph Philip Caoile
+
+## UI/UX Design Team
+- Gray Velkan Gonzales
+- Jason Gian Duran
+- Athalia Lexine Marfil
+
+## Frontend Team
+- Kiefer Tayawa
+- Shane Pepito
+- Niño Rafael Zerna
+- Ian Tristan Arragona
+
+## Backend Team
+- Sigmund Oscar O. Baybay
+- Ralph Philip Caoile
+- Norman Marfa III
