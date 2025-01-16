@@ -86,22 +86,6 @@ label {
     font-size: 12px;
 }
 
-.mentor-name{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #003366;
-    padding: 15px;
-    border:none;
-    border-radius: 50px;
-    width:289px;
-    height: 18px;
-    color: #edf0f2;
-    font-weight: bolder;
-    padding-bottom: 10px;
-    margin-bottom: 13px;
-}
-
 input{
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     background-color: #edf0f2;

@@ -43,11 +43,11 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                     <form className="fields-container">
                         {/* <form> */}
                             {/* <InfoField label={"MENTOR"} data={mentor} labelClass="custom-label"></InfoField> */}
-                            <label>MENTOR</label><input type="text" id="mentor" value={/*mentor*/"MENTOR NAME HERE"} disabled/>
-                            <label>NAME</label><input type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
-                            <label>YSES BATCH</label><input type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
-                            <label>COLLEGE BATCH</label><input type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>
-                            <label>LEVEL</label><input type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
+                            <label>MENTOR</label><input className="input" type="text" id="mentor" value={/*mentor*/"MENTOR NAME HERE"} disabled/>
+                            <label>NAME</label><input className="input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
+                            <label>YSES BATCH</label><input className="input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
+                            <label>COLLEGE BATCH</label><input className="input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>
+                            <label>LEVEL</label><input className="input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
                             
                             <button type="submit" className="save-button">SAVE</button>
                         {/* </form> */}
