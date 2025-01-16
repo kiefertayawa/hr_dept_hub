@@ -1,9 +1,12 @@
+import { useState } from "react"
 import defaultPic from "../assets/default pic.jpeg"
 import uploadIcon from "../assets/upload icon.png"
 import "./AddMember.css"
 
 
-export default function AddMember({exit, mentor}){
+export default function AddMember({exit, mentor, level}){
+const [newLevel, setLevel] = useState(level)
+
  return (
          <>
          <div className="form">
@@ -16,7 +19,7 @@ export default function AddMember({exit, mentor}){
             <form className="field">
                 <div className="details">
                     <p>MENTOR</p>
-                    <div className="mentor-name">{/*mentor*/}MENTOR NAME HERE</div>
+                    <div className="mentor-name">{mentor}</div>
                     <label htmlFor="name">NAME</label>
                     <input type="text" id="name" name="name"/>
                     <label htmlFor="orgbatch">YSES BATCH</label>
@@ -24,7 +27,7 @@ export default function AddMember({exit, mentor}){
                     <label htmlFor="collegebatch">COLLEGE BATCH</label>
                     <input type="text" id="collegebatch" name="collegebatch"/>
                     <label htmlFor="level">LEVEL</label>
-                    <input type="number" id="level" name="level"/>
+                    <input type="number" id="level" name="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
                         <div className="upload-photo">
                             <img src={uploadIcon} alt="upload pic" className="upload-pic"/>
                             <button className="upload-btn">UPLOAD PIC</button>

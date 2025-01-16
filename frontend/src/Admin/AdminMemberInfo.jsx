@@ -11,7 +11,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
     const [newCollegeBatch, setCollegeBatch] = useState(collegeBatch);
-    const [newLevel, setLevel] = useState(level);
+    const [newLevel, setLevel] = useState(Number(level));
     
     
     return (
@@ -55,7 +55,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                 </div>
             </div>
         ) : (
-            <AddMember exit={()=> showAddMember(false)} mentor={mentor}/>
+            <AddMember exit={()=> showAddMember(false)} mentor={newName} level={newLevel+1}/>
         )
     }
                </>
