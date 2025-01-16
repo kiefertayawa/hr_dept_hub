@@ -3,10 +3,11 @@ import addButton from "../assets/add icon.png"
 import removeButton from "../assets/remove icon.png"
 import uploadIcon from "../assets/upload icon.png"
 import AddMember from "./AddMember"
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import "./AdminMemberInfo.css";
+import axios from "axios";
 
-export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level}){
+export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, id, bloodline}){
     const [isAddingMember, showAddMember] = useState(false);
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
@@ -14,6 +15,40 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
     // const [newLevel, setLevel] = useState(Number(level));
     const [newLevel, setLevel] = useState(Number(1)); {/*use yung commented out level, para magamit yung info*/ }
     
+    // Function to handle adding new member
+    const handleAddMember = async (newMember) => {
+        try {            
+                // Add new member
+                const formData = new FormData();
+                formData.append("parentId", newMember.parentId);
+                formData.append("name", newMember.name);
+                formData.append("collegeBatch", newMember.collegeBatch);
+                formData.append("ysesBatch", newMember.ysesBatch);
+                formData.append("bloodline", newMember.bloodline);
+                formData.append("mentor", newMember.mentor);
+                formData.append("image", newMember.image);
+
+                await axios.post(
+                "http://localhost:4000/api/upload/upload-member-image",   // THIS IS WHERE YOU UPLOAD
+                formData,
+                {
+                    headers: {
+                    "Content-Type": "multipart/form-data",
+                    },
+                    withCredentials: true,
+                }
+                );
+                alert("Member added successfully!");
+            
+                // fetchMembers(); // Refresh products after save
+            } catch (error) {
+                console.error("Error adding member:", error);
+                // alert("Failed to add member. Please try again.");
+            }
+        showAddMember(false); 
+    };
+
+
     return (
         <>
         {!isAddingMember? (
@@ -52,7 +87,14 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                 </div>
             </div>
         ) : (
-            <AddMember exit={()=> showAddMember(false)} mentor={newName} level={newLevel+1}/>
+            <AddMember 
+                exit={()=> showAddMember(false)} 
+                mentor={newName} 
+                level={newLevel+1} 
+                parentId={id} 
+                bloodline={bloodline}                
+                onSave={handleAddMember}
+            />
         )
     }
                </>

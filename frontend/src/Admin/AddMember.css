@@ -51,15 +51,21 @@
     margin-top: 10px;
     font-size: 15px;
     padding: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: #edf0f2;
     color: #003366;
     border: none;
-    width:120px;
+    border-radius: 25px;
+    padding: 0 15px;
     height: 40px;
-    border-radius: 45px;
+
+    display: inline-block;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
 }
 
 .upload-btn:hover {

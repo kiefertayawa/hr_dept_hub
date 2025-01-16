@@ -82,6 +82,9 @@ export default function Admin_FamilyTree() {
                 collegeBatch={nodeInfo.collegeBatch}
                 mentor={nodeInfo.mentor} 
                 level={nodeInfo.level}
+
+                id={nodeInfo.id}
+                bloodline={nodeInfo.bloodline}
                 />}  {/* Add mentor and level info */}
             </div> 
         </>
