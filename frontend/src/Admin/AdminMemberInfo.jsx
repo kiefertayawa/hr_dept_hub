@@ -12,7 +12,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
     const [newCollegeBatch, setCollegeBatch] = useState(collegeBatch);
     // const [newLevel, setLevel] = useState(Number(level));
-    const [newLevel, setLevel] = useState(Number(1));
+    const [newLevel, setLevel] = useState(Number(1)); {/*use yung commented out level, para magamit yung info*/ }
     
     return (
         <>
@@ -41,16 +41,13 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                         <button className="upload-pic-button">UPLOAD PIC</button>
                     </div>
                     <form className="fields-container">
-                        {/* <form> */}
-                            {/* <InfoField label={"MENTOR"} data={mentor} labelClass="custom-label"></InfoField> */}
-                            <label>MENTOR</label><input className="input" type="text" id="mentor" value={/*mentor*/"MENTOR NAME HERE"} disabled/>
-                            <label>NAME</label><input className="input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
-                            <label>YSES BATCH</label><input className="input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
-                            <label>COLLEGE BATCH</label><input className="input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>
-                            <label>LEVEL</label><input className="input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
-                            
-                            <button type="submit" className="save-button">SAVE</button>
-                        {/* </form> */}
+                        <label>MENTOR</label><input className="input" type="text" id="mentor" value={mentor} disabled/>
+                        <label>NAME</label><input className="input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
+                        <label>YSES BATCH</label><input className="input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
+                        <label>COLLEGE BATCH</label><input className="input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>
+                        <label>LEVEL</label><input className="input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
+                        
+                        <button type="submit" className="save-button">SAVE</button>
                     </form>
                 </div>
             </div>
