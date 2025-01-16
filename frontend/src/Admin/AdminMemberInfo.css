@@ -13,7 +13,7 @@
 .member-container {
     margin-top: 60px;
     display: flex;
-    width: 70%;
+    width: 60%;
     height: 80%;
     background: whitesmoke;
     border-radius: 40px;
@@ -170,7 +170,7 @@ button {
     gap: 20px; 
     position: absolute;
     top: 160px;
-    right: 418px;
+    right: 495px;
     width: 135px; 
     height: 60px; 
 }
