@@ -1,11 +1,11 @@
-import InfoField from "./AdminInfoField";
+import InfoField from "./InfoField";
 import memberImg from "../assets/default pic.jpeg";
-import "./AdminMemberInfo.css";
 import addButton from "../assets/add icon.png"
 import removeButton from "../assets/remove icon.png"
 import uploadIcon from "../assets/upload icon.png"
 import AddMember from "./AddMember"
 import { useState } from "react";
+import "./AdminMemberInfo.css";
 
 export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}){
     const [addMember, showAddMember] = useState(false);
@@ -36,13 +36,18 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}
                         </div>
                         <button className="upload-pic-button">UPLOAD PIC</button>
                     </div>
-                    <div className="fields-container">
-                        <InfoField label={"NAME"} data={name} labelClass="custom-label" />
-                        <InfoField label={"YSES BATCH"} data={ysesBatch} labelClass="custom-label" />
-                        <InfoField label={"COLLEGE BATCH"} data={collegeBatch} labelClass="custom-label" />
-                        {mentor && <InfoField label={"MENTOR"} data={mentor} labelClass="custom-label" />} {/* Don't render if node is a charter member */}
-                        <button className="save-button">SAVE</button>
-                    </div>
+                    <form className="fields-container">
+                        {/* <form> */}
+                            {/* <InfoField label={"MENTOR"} data={mentor} labelClass="custom-label"></InfoField> */}
+                            <InfoField label={"MENTOR"} data={"MENTOR NAME HERE"} labelClass="custom-label"/>
+                            <InfoField label={"NAME"} data={name} labelClass="admincustom-label"/>
+                            <InfoField label={"YSES BATCH"} data={ysesBatch} labelClass="admincustom-label" />
+                            <InfoField label={"COLLEGE BATCH"} data={collegeBatch} labelClass="admincustom-label" />
+                            
+                            
+                            <button type="submit" className="save-button">SAVE</button>
+                        {/* </form> */}
+                    </form>
                 </div>
             </div>
         ) : (
