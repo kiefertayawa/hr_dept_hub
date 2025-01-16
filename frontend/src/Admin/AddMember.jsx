@@ -3,7 +3,7 @@ import uploadIcon from "../assets/upload icon.png"
 import "./AddMember.css"
 
 
-export default function AddMember({exit}){
+export default function AddMember({exit, mentor}){
  return (
          <>
          <div className="form">
@@ -16,7 +16,7 @@ export default function AddMember({exit}){
             <form className="field">
                 <div className="details">
                     <p>MENTOR</p>
-                    <div className="mentor-name">MENTOR NAME HERE</div>
+                    <div className="mentor-name">{/*mentor*/}MENTOR NAME HERE</div>
                     <label htmlFor="name">NAME</label>
                     <input type="text" id="name" name="name"/>
                     <label htmlFor="orgbatch">YSES BATCH</label>
