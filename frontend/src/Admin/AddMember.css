@@ -24,8 +24,7 @@
     margin-left: 10px;
     background: #003366;
     padding: 0px;
-    border: 0px solid transparent; 
-    cursor: pointer; 
+    border: 0px solid transparent;
     text-align: center;  
     line-height: 40px; 
 }
@@ -57,8 +56,6 @@
     width:111px;
     height: 31px;
     border-radius: 45px;
-    /* padding: 8px 12px; */
-    cursor: pointer;
 }
 
 .upload-btn:hover {
@@ -72,13 +69,16 @@
     flex-direction: column;
 }
 
-.mentor-name {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 15px;
+p {
+    margin-top: 5px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: #003366;
+    font-size: 15px;
+
 }
 
-label, p {
+label {
     margin-top: 5px;
     font-weight: 600;
     margin-bottom: 5px;
@@ -99,6 +99,7 @@ label, p {
     color: #edf0f2;
     font-weight: bolder;
     padding-bottom: 10px;
+    margin-bottom: 13px;
 }
 
 input{
@@ -107,15 +108,13 @@ input{
     padding: 10px;
     border:none;
     border-radius: 50px;
-    width:300px;
-    height: 20px;
     color: #003366;
     font-weight: bolder;
     padding-bottom: 10px;
     text-align: center;
     align-items: center;
     margin-bottom: 15px;
-    
+    width: 298px !important;
 }
 
 .save-btn {
@@ -124,8 +123,6 @@ input{
     border: none;
     font-size: 13px;
     border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
     width:125px;
     height:36px;
     margin: 0 auto;

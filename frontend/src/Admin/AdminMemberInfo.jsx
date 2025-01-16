@@ -55,7 +55,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                 </div>
             </div>
         ) : (
-            <AddMember exit={()=> showAddMember(false)}/>
+            <AddMember exit={()=> showAddMember(false)} mentor={mentor}/>
         )
     }
                </>
