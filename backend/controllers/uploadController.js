@@ -34,7 +34,7 @@ const uploadMemberImage = async (req, res) => {
     }
 
     // Create a new member
-    const { id, parentId, name, collegeBatch, ysesBatch, bloodline } = req.body;
+    const { id, parentId, name, collegeBatch, ysesBatch, bloodline, mentor } = req.body;
     const newMember = new Member({
       id, 
       parentId, 
@@ -42,6 +42,7 @@ const uploadMemberImage = async (req, res) => {
       collegeBatch, 
       ysesBatch, 
       bloodline,
+      mentor,
       imageUrl,
     });
     await newMember.save();

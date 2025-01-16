@@ -10,9 +10,9 @@ router.get('/getAll', memberController.getFamilyTree)
 router.get('/get-member-by-id/:id', memberController.getMemberById)
 
 
-// POST new member 
-// (primitive adding of new member; updated one is in upload router)
-router.post('/add-new-member', memberController.addMember)
+// // POST new member 
+// // (primitive adding of new member; updated one is in upload router)
+// router.post('/add-new-member', memberController.addMember)
 
 
 // PATCH member detail
