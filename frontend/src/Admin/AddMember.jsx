@@ -19,16 +19,16 @@ const [newLevel, setLevel] = useState(level)
             <form className="field">
                 <div className="details">
                     <label htmlFor="mentor">MENTOR</label>
-                    <input type="text" id="mentor" name="mentor" value={mentor} disabled/>
+                    <input type="text" id="add_mentor" name="mentor" value={mentor} disabled/>
                     {/* <div className="mentor-name">{mentor}</div> */}
                     <label htmlFor="name">NAME</label>
-                    <input type="text" id="name" name="name"/>
+                    <input type="text" id="add_name" name="name"/>
                     <label htmlFor="orgbatch">YSES BATCH</label>
-                    <input type="text" id="orgbatch" name="orgbatch"/>
+                    <input type="text" id="add_orgbatch" name="orgbatch"/>
                     <label htmlFor="collegebatch">COLLEGE BATCH</label>
-                    <input type="text" id="collegebatch" name="collegebatch"/>
+                    <input type="text" id="add_collegebatch" name="collegebatch"/>
                     <label htmlFor="level">LEVEL</label>
-                    <input type="number" id="level" name="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))} disabled/>
+                    <input type="number" id="add_level" name="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))} disabled/>
                         <div className="upload-photo">
                             <img src={uploadIcon} alt="upload pic" className="upload-pic"/>
                             <button className="upload-btn">UPLOAD PIC</button>
