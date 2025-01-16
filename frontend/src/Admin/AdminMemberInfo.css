@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     height:80vh;
-    width:80%;
+    width:95%;
 }
 
 /* whole card */
@@ -95,18 +95,19 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    height: 75%;
-    margin: 0 5 0 0;
+    height: 76.5%;
+    margin-top: 60px;
     gap:1px;
     text-align: left;
+    align-items: flex-start;
 }
 
 .input {
-    text-align: left !important;
-    padding-left: 10px !important;
+    text-align: center;
+    padding-left: 20px !important;
     font-size: 16px !important;
     width: 90% !important;
-    height: 5% !important;
+    height: 7% !important;
     background-color: #e5e6e8 !important;
 }
 
@@ -119,15 +120,13 @@ input:disabled {
     background-color: #003366 !important;
 }
 
-
-label {
-    display: block;
-    margin-bottom: 2px;
+.fields-container label {
     text-align: left;
+    margin-left: 5px;
+    margin-bottom: 4px;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 15px;
-
 }
 
 /* for save button */
@@ -169,8 +168,8 @@ button {
     justify-content: center; 
     gap: 20px; 
     position: absolute;
-    top: 160px;
-    right: 495px;
+    top: 165px;
+    right: 410px;
     width: 135px; 
     height: 60px; 
 }
