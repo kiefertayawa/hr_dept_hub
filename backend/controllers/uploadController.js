@@ -33,10 +33,15 @@ const uploadMemberImage = async (req, res) => {
       imageUrl = placeholderImageUrl;
     }
 
-    // Create a new member
-    const { id, parentId, name, collegeBatch, ysesBatch, bloodline, mentor } = req.body;
+    // TODO: i think this could break the db if many members are deleted but it will work for the meantime
+    // Get the next member ID by counting the current members
+    const memberCount = await Member.countDocuments({});
+    const newId = memberCount + 1;  // Increment the member count for the new member ID
+
+    // Create a new member with the incremented ID and uploaded image URL
+    const { parentId, name, collegeBatch, ysesBatch, bloodline, mentor } = req.body;
     const newMember = new Member({
-      id, 
+      id: newId, 
       parentId, 
       name, 
       collegeBatch, 
@@ -45,6 +50,7 @@ const uploadMemberImage = async (req, res) => {
       mentor,
       imageUrl,
     });
+
     await newMember.save();
 
     res.status(201).json({ success: true, message: 'Member added successfully', imageUrl });
@@ -58,48 +64,3 @@ const uploadMemberImage = async (req, res) => {
 export default  {
   uploadMemberImage
 }
-
-// module.exports = { uploadImage };
-
-// const cloudinary = require('cloudinary').v2;
-// const Product = require('../models/Product');
-// const cloudinaryConfig = require('../config/cloudinaryConfig');
-// const multer = require('multer');
-
-// cloudinary.config(cloudinaryConfig); // Import the Cloudinary config
-
-// // Configure multer for file uploads
-// const upload = multer({ dest: 'uploads/' }); // Set the destination folder for storing temporary files
-
-// const uploadImage = async (req, res) => {
-//     try {
-//       console.log("upload image controller...");
-//       console.log("This is also the request body object: ", req.body); // This will show form data
-//       console.log("This is the uploaded file object: ", req.file); // This will show the uploaded file object
-  
-//       // Upload the image to Cloudinary
-//       const result = await cloudinary.uploader.upload(req.file.path);
-//       const imageUrl = result.secure_url;
-  
-//       // Create a new product using the form data
-//       const { productName, description, productType, quantity, price } = req.body; // Extract price from request body
-//       const product = new Product({
-//         productName,
-//         description,
-//         productType,
-//         quantity,
-//         price,
-//         imageUrl
-//       });
-//       await product.save();
-  
-//       // Respond with success message
-//       res.status(201).json({ success: true, message: 'Product created successfully' });
-//     } catch (error) {
-//       console.error('Server Error uploading image:', error);
-//       res.status(500).json({ success: false, message: 'Failed to upload image' });
-//     }
-//   };
-  
-//   module.exports = { uploadImage };
-  

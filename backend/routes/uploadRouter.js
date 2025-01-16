@@ -14,7 +14,7 @@ const upload = multer({ dest: 'uploads/' }); // Set the destination folder for s
 
 // Route to upload image 
 // TODO: Need to restrict to admin
-router.post("/upload-member-image", upload.single('imageUrl'), uploadController.uploadMemberImage);
+router.post("/upload-member-image", upload.single('image'), uploadController.uploadMemberImage);
 
 export default router
 
