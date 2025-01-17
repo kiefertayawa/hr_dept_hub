@@ -7,6 +7,7 @@
     justify-content: center;
     height:80vh;
     width:95%;
+    
 }
 
 /* whole card */
@@ -24,13 +25,13 @@
 }
 
 /* exit button */
-.exit-button {
+.meminfo-exit-button {
     color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 24px;
     position: absolute;
     top: 3%;
-    left: 1%;
+    left: 1.5%;
     background: #003366;
     padding: 0px;
     border: 0px solid transparent;
@@ -53,7 +54,7 @@
     position: relative;
 }
 
-.member-image {
+.meminfo-member-image {
     height: 74%;
     width: auto;
     max-height: 100%;
@@ -64,7 +65,7 @@
     left: 3%;
 }
 
-.upload-section {
+.meminfo-upload-section {
     position: absolute;
     bottom: 5.5%;
     left: 32%;
@@ -72,12 +73,12 @@
     align-items: center;
 }
 
-.upload-icon {
+.meminfo-upload-icon {
     width: 42px;
     height: 42px;
 }
 
-.upload-pic-button {
+.meminfo-upload-pic-button {
     position: absolute;
     bottom: 5%;
     left: 43%;
@@ -95,42 +96,49 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    height: 76.5%;
-    margin-top: 60px;
+    height: 75%;
+    margin-top: 50px;
     gap:1px;
     text-align: left;
     align-items: flex-start;
 }
 
-.input {
+.meminfo-input {
     text-align: center;
-    padding-left: 20px !important;
-    font-size: 16px !important;
-    width: 90% !important;
-    height: 7% !important;
-    background-color: #e5e6e8 !important;
+    border:none;
+    color:#003366;
+    border-radius: 45px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    padding-left: 20px ;
+    font-size: 16px ;
+    width: 95% ;
+    height: 9% ;
+    background-color: #e5e6e8 ;
+    margin-bottom: 6px;
 }
 
-input:focus {
-    outline: 1px solid #003366;
+.meminfo-input:focus {
+    outline: 1px solid #003366 ;
 }
 
-input:disabled {
-    color: #e5e6e8 !important;
-    background-color: #003366 !important;
+.meminfo-input:disabled {
+    color: #e5e6e8 ;
+    background-color: #003366 ;
 }
 
 .fields-container label {
     text-align: left;
     margin-left: 5px;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 15px;
+    color:#003366;
 }
 
 /* for save button */
-.save-button {
+.meminfo-save-button {
     position: absolute;
     bottom: 5%;
     left: 70%;
@@ -148,7 +156,7 @@ button {
     font-weight: bold;
 }
 
-.save-button:hover, .upload-pic-button:hover {
+.meminfo-save-button:hover, .meminfo-upload-pic-button:hover {
     color: white;
     outline: none;
     background: #00509e;
@@ -168,8 +176,8 @@ button {
     justify-content: center; 
     gap: 20px; 
     position: absolute;
-    top: 165px;
-    right: 410px;
+    top: 150px;
+    right: 21.3%;
     width: 135px; 
     height: 60px; 
 }

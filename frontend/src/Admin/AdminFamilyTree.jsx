@@ -7,6 +7,7 @@ import '../FamilyTree/FamilyTree.css';
 import leftArrow from '../assets/arrow-left.png'
 import rightArrow from '../assets/arrow-right.png'
 import Search from '../FamilyTree/Search.jsx';
+import AdminMemberInfo from './AdminMemberInfo.jsx';
 
 export default function Admin_FamilyTree() {
     const [data, setData] = useState(null);
@@ -81,7 +82,7 @@ export default function Admin_FamilyTree() {
             </div>
             <div className={`info-container ${nodeInfo ? 'visible' : 'hidden'}`}>
 
-                {nodeInfo && <MemberInfo exit={setNodeInfo} 
+                {nodeInfo && <AdminMemberInfo exit={setNodeInfo} 
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
                 collegeBatch={nodeInfo.collegeBatch}

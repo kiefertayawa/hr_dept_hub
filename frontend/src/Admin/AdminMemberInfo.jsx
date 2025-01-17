@@ -7,7 +7,7 @@ import { useState, useEffect  } from "react";
 import "./AdminMemberInfo.css";
 import axios from "axios";
 
-export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
+export default function AdminMemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
     const [isAddingMember, showAddMember] = useState(false);
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
@@ -82,7 +82,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                 
                 <div className="member-container">
                     <button
-                        className="exit-button"
+                        className="meminfo-exit-button"
                         onClick={() => {
                             exit(null);
                         } }
@@ -90,20 +90,20 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                         ✖
                     </button>
                     <div className="image-container">
-                        <img src={imageUrl || memberImg} className="member-image" />
-                        <div className="upload-section">
-                            <img src={uploadIcon} alt="Upload Icon" className="upload-icon" />
+                        <img src={imageUrl || memberImg} className="meminfo-member-image" />
+                        <div className="meminfo-upload-section">
+                            <img src={uploadIcon} alt="Upload Icon" className="meminfo-upload-icon" />
                         </div>
-                        <button className="upload-pic-button">UPLOAD PIC</button>
+                        <button className="meminfo-upload-pic-button">UPLOAD PIC</button>
                     </div>
                     <form className="fields-container">
-                        <label>MENTOR</label><input className="input" type="text" id="mentor" value={mentor} disabled/>
-                        <label>NAME</label><input className="input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
-                        <label>YSES BATCH</label><input className="input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
-                        <label>COLLEGE BATCH</label><input className="input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>
-                        <label>LEVEL</label><input className="input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
+                        <label className="meminfo-label" htmlFor="mentor">MENTOR</label><input className="meminfo-input" type="text" id="mentor" value={mentor} disabled/>
+                        <label className="meminfo-label" htmlFor="name">NAME</label><input className="meminfo-input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
+                        <label className="meminfo-label" htmlFor="yses-batch">YSES BATCH</label><input className="meminfo-input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
+                        <label className="meminfo-label" htmlFor="college-batch">COLLEGE BATCH</label><input className="meminfo-input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>
+                        <label className="meminfo-label" htmlFor="level">LEVEL</label><input className="meminfo-input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
                         
-                        <button type="submit" className="save-button">SAVE</button>
+                        <button type="submit" className="meminfo-save-button">SAVE</button>
                     </form>
                 </div>
             </div>

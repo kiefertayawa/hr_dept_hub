@@ -51,15 +51,16 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
          <>
          <div className="form">
             <button
-                className="exit-button"
+                className="addmember-exit-button"
                 onClick={exit}
             >
             ✖
             </button>
             <form className="field" onSubmit={handleFormSubmit}>
                 <div className="details">
-                    <label htmlFor="mentor">MENTOR</label>
+                    <label htmlFor="mentor" className="addmember-label">MENTOR</label>
                     <input 
+                        className="addmember-input"
                         type="text" 
                         id="add_mentor" 
                         name="mentor" 
@@ -67,8 +68,9 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                     />
                     {/* <div className="mentor-name">{mentor}</div> */}
 
-                    <label htmlFor="name">NAME</label>
+                    <label htmlFor="name" className="addmember-label">NAME</label>
                     <input 
+                        className="addmember-input"
                         type="text" 
                         id="add_name" 
                         name="name"
@@ -78,8 +80,9 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                         required
                     />
 
-                    <label htmlFor="orgbatch">YSES BATCH</label>
+                    <label htmlFor="orgbatch" className="addmember-label">YSES BATCH</label>
                     <input 
+                        className="addmember-input"
                         type="text" 
                         id="add_orgbatch" 
                         name="orgbatch"
@@ -89,8 +92,9 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                         required
                     />
 
-                    <label htmlFor="collegebatch">COLLEGE BATCH</label>
+                    <label htmlFor="collegebatch" className="addmember-label">COLLEGE BATCH</label>
                     <input 
+                        className="addmember-input"
                         type="text" 
                         id="add_collegebatch" 
                         name="collegebatch"
@@ -100,8 +104,9 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                         required
                     />
 
-                    <label htmlFor="level">LEVEL</label>
+                    <label htmlFor="level" className="addmember-label">LEVEL</label>
                     <input 
+                        className="addmember-input"
                         type="number" 
                         id="add_level" 
                         name="level" 
@@ -110,12 +115,13 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                     />
 
                     {/* Upload Button */}
-                    <div className="upload-photo">
-                        <img src={uploadIcon} alt="upload pic" className="upload-pic" />
-                        <label htmlFor="file-upload" className="upload-btn">
+                    <div className="addmember-upload-photo">
+                        <img src={uploadIcon} alt="upload pic" className="addmember-upload-pic" />
+                        <label htmlFor="file-upload" className="addmember-upload-btn">
                             {fileName}
                         </label>
                         <input
+                            // className="addmember-input"
                             id="file-upload"
                             type="file"
                             onChange={handleFileChange}
@@ -125,7 +131,7 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                     </div>
 
 
-                    <button type="submit" className="save-btn">ADD MEMBER</button>
+                    <button type="submit" className="addmember-save-btn">ADD MEMBER</button>
                 </div>
             </form>
         </div>
@@ -168,7 +174,7 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
 //                     <input type="number" id="add_level" name="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))} disabled/>
 //                         <div className="upload-photo">
 //                             <img src={uploadIcon} alt="upload pic" className="upload-pic"/>
-//                             <button className="upload-btn">UPLOAD PIC</button>
+//                             <button className="addmember-upload-btn">UPLOAD PIC</button>
 //                         </div>
 //                     <button type="submit" className="save-btn">ADD MEMBER</button>
 //                 </div>
