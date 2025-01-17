@@ -138,7 +138,7 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
                     <button className="remove-btn" onClick={() => handleDeleteMember(_id)}><img src={removeButton} alt="-"/></button>
                 </div>
                 
-                <div className="member-container">
+                <div className="admin-member-container">
                     <button
                         className="meminfo-exit-button"
                         onClick={() => {
