@@ -2,7 +2,7 @@ import InfoField from "./InfoField";
 import memberImg from "../assets/default pic.jpeg";
 import "./MemberInfo.css";
 
-export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
+export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, imageUrl}){
     return (
         <div className="member-container">
             <button

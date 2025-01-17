@@ -102,13 +102,9 @@ export default function FamilyTree() {
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
                 collegeBatch={nodeInfo.collegeBatch}
-                mentor={nodeInfo.mentor} />}  
-                level={nodeInfo.level}
-
-                _id={nodeInfo._id}
-                id={nodeInfo.id}
-                bloodline={nodeInfo.bloodline}
+                mentor={nodeInfo.mentor} 
                 imageUrl={nodeInfo.imageUrl}
+                />}  
             </div> 
         </>
     )
