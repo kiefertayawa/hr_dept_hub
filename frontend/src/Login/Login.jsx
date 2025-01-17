@@ -35,7 +35,7 @@ const Login = () => {
             />
 
             <button type="submit" className="login-btn" disabled = {isLoading}>LOGIN</button>
-            {error && <div className="error">{error}</div>}
+            {error && <div className="error">{window.alert("Incorrect Username/Password")}</div>}
           </form>
         </div>
 
