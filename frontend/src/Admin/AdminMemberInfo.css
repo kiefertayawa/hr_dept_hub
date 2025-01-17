@@ -102,7 +102,12 @@
     gap:1px;
     text-align: left;
     align-items: flex-start;
+    padding-left:40px;
 }
+
+/* .meminfo-input, .fields-container label {
+    margin-left: 20px;
+} */
 
 /* inputs */
 .meminfo-input {
@@ -112,9 +117,9 @@
     border-radius: 45px;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: 700;
-    padding-left: 20px ;
+    padding-left: 30px ;
     font-size: 16px ;
-    width: 95% ;
+    width: 85% ;
     height: 9% ;
     background-color: #e5e6e8 ;
     margin-bottom: 6px;
