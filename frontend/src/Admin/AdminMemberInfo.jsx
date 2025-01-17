@@ -12,8 +12,8 @@ export default function AdminMemberInfo({exit, name, ysesBatch, collegeBatch, me
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
     const [newCollegeBatch, setCollegeBatch] = useState(collegeBatch);
-    // const [newLevel, setLevel] = useState(Number(level));
-    const [newLevel, setLevel] = useState(Number(1)); {/*use yung commented out level, para magamit yung info*/ }
+    const [newLevel, setLevel] = useState(Number(level));
+    // const [newLevel, setLevel] = useState(Number(1)); {/*use yung commented out level, para magamit yung info*/ }
     
     // Function to handle adding new member
     const handleAddMember = async (newMember) => {
