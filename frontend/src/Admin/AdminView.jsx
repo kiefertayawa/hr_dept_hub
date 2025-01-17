@@ -1,5 +1,4 @@
 // import Login from "./Login/Login.jsx"
-import FamilyTree from "../FamilyTree/FamilyTree.jsx"
 import Admin_FamilyTree from "./AdminFamilyTree.jsx"
 import Admin_Header from '../Admin/AdminHeader.jsx'
 import bg from "../assets/bg video black.mp4"
