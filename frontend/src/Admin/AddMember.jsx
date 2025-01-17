@@ -4,8 +4,7 @@ import uploadIcon from "../assets/upload icon.png"
 import "./AddMember.css"
 
 
-export default function AddMember({exit, mentor, level, parentId, bloodline, onSave}){
-    const [newLevel, setLevel] = useState(level)
+export default function AddMember({exit, mentor, parentId, bloodline, onSave}){
 
     // State variables to manage form fields and data.
     const [name, setMemberName] = useState('');
@@ -24,7 +23,6 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
     };
 
     // Function to handle form submission.
-    // TODO: handle level, 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 

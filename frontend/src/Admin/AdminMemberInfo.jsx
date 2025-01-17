@@ -161,8 +161,8 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
             <div className="containers-container">
             
                 <div className="buttons-container"> 
-                    <button className="add-btn" onClick={()=>showAddMember(true)}><img src={addButton} alt="+"/></button> 
-                    <button className="remove-btn" onClick={() => handleDeleteMember(_id)}><img src={removeButton} alt="-"/></button>
+                    <button className="add-btn" onClick={()=>{showAddMember(true); exit(null)}}><img src={addButton} alt="+"/></button> 
+                    <button className="remove-btn" onClick={() => {handleDeleteMember(_id); exit(null)}}><img src={removeButton} alt="-"/></button>
                 </div>
                 
                 <div className="admin-member-container">
