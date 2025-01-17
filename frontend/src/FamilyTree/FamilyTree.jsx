@@ -23,10 +23,14 @@ export default function FamilyTree() {
                 .nodeWidth(() => 400)
                 .nodeHeight(() => 350)  
                 .nodeContent((d) => {
-                    const { id, name, parentId } = d.data;
+                    const { id, name, parentId, imageUrl } = d.data;
+                    const imageStyle = imageUrl
+                        ? `background-image: url('${imageUrl}');`
+                        : `background-image: url('pfp-placeholder.jpeg');`;
+                
                     return `
                         <div class="tree-node">
-                            <div class="circle-image"></div>
+                            <div class="circle-image" style="${imageStyle}"></div>
                             <p><span class="label">ID:</span> <span class="data">${id}</span></p>
                             <p><span class="label">Name:</span> <span class="data">${name}</span></p>
                             <p><span class="label">Parent:</span> <span class="data">${parentId}</span></p>
@@ -98,7 +102,13 @@ export default function FamilyTree() {
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
                 collegeBatch={nodeInfo.collegeBatch}
-                mentor={nodeInfo.mentor} />}  {/* Add mentor info */}
+                mentor={nodeInfo.mentor} />}  
+                level={nodeInfo.level}
+
+                _id={nodeInfo._id}
+                id={nodeInfo.id}
+                bloodline={nodeInfo.bloodline}
+                imageUrl={nodeInfo.imageUrl}
             </div> 
         </>
     )

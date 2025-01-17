@@ -7,7 +7,7 @@ import { useState, useEffect  } from "react";
 import "./AdminMemberInfo.css";
 import axios from "axios";
 
-export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, id, bloodline}){
+export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
     const [isAddingMember, showAddMember] = useState(false);
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
@@ -49,6 +49,27 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
     };
 
 
+    // TODO: I commented out the delete handler because it may break the db kahit isang wrong click huhu. but it is fully functional
+    // Function to handle the deletion of a product
+    const handleDeleteMember = async (memberId) => {
+        // try {
+        // console.log("product id: ", memberId);
+        // await axios.delete(
+        //     `http://localhost:4000/api/member/delete-member-by-id`,
+        //     {
+        //     data: { _id: memberId },
+        //     withCredentials: true,
+        //     }
+        // );
+
+        // alert("Member deleted successfully!");
+        // } catch (error) {
+        // console.error("Error deleting member:", error);
+        // alert("Failed to delete member. Please try again.");
+        // }
+    };
+
+
     return (
         <>
         {!isAddingMember? (
@@ -56,7 +77,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
             
                 <div className="buttons-container"> 
                     <button className="add-btn" onClick={()=>showAddMember(true)}><img src={addButton} alt="+"/></button> 
-                    <button className="remove-btn" onClick=""><img src={removeButton} alt="-"/></button>
+                    <button className="remove-btn" onClick={() => handleDeleteMember(_id)}><img src={removeButton} alt="-"/></button>
                 </div>
                 
                 <div className="member-container">
@@ -69,7 +90,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                         ✖
                     </button>
                     <div className="image-container">
-                        <img src={memberImg} className="member-image" />
+                        <img src={imageUrl || memberImg} className="member-image" />
                         <div className="upload-section">
                             <img src={uploadIcon} alt="Upload Icon" className="upload-icon" />
                         </div>
