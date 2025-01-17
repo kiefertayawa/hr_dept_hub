@@ -6,6 +6,7 @@
 }
 
 .label {
+    margin-top: 50px;
     margin-bottom: 5px;
     color: #003366;
     font-weight: bold;
@@ -21,7 +22,7 @@
     font-family: 'Arial', sans-serif;  
     text-align: left;
     margin-left: 40px;
-    margin-bottom: 7px;
+    margin-bottom: 3.5px;
 }
 
 .info {

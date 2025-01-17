@@ -16,7 +16,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
             <div className="image-container">
                 <img src={imageUrl || memberImg} className="member-image" />
             </div>
-            <div className="fields-container">
+            <div className="app-fields-container">
             <InfoField label={"NAME"} data={name} labelClass="custom-label" />
             <InfoField label={"YSES BATCH"} data={ysesBatch} labelClass="custom-label" />
             <InfoField label={"COLLEGE BATCH"} data={collegeBatch} labelClass="custom-label" />

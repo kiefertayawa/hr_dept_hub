@@ -26,6 +26,7 @@
     border-radius: 50%; 
     text-align: center;  
     line-height: 40px; 
+    z-index:5;
 }
 
 
@@ -49,7 +50,7 @@
     left: 3%;
 }
 
-.fields-container { 
+.app-fields-container { 
     display: flex;
     flex-direction: column;
     justify-content: center;
