@@ -117,7 +117,7 @@
     align-items: flex-start;
     padding-left:40px;
     width: 50%;
-    padding-top: 12px;
+    padding-top: 20px;
 }
 
 /* inputs */
@@ -131,7 +131,7 @@
     padding-left: 30px ;
     font-size: 16px ;
     width: 85% ;
-    height: 11% ;
+    height: 15% ;
     background-color: #e5e6e8 ;
     margin-bottom: 6px;
 }
@@ -160,7 +160,7 @@
 .meminfo-save-button {
     position: absolute;
     bottom: 5%;
-    left: 70%;
+    left: 72%;
     background-color: #003366;
     color: white;
     border: none;

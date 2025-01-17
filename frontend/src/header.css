@@ -16,6 +16,19 @@
     border-bottom: 1px solid rgba(248, 248, 255, 0.527);
   }
   
+  a{
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+  }  
+
+  a:hover,
+  a:active,
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+  
   .header-title {
     font-size: 50px;
     font-weight: bold;

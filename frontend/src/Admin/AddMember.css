@@ -121,7 +121,8 @@
     text-align: center;
     align-items: center;
     margin-bottom: 10px;
-    width: 320px !important;
+    width: 410px !important;
+    height: 30px !important;
     font-size: 18px;
 }
 
@@ -141,7 +142,7 @@
     width:140px;
     height:40px;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .addmember-save-btn:hover {

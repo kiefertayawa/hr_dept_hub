@@ -101,7 +101,7 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                         required
                     />
 
-                    <label htmlFor="level" className="addmember-label">LEVEL</label>
+                    {/* <label htmlFor="level" className="addmember-label">LEVEL</label>
                     <input 
                         className="addmember-input"
                         type="number" 
@@ -109,7 +109,7 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
                         name="level" 
                         value={newLevel} 
                         onChange={(e) => setLevel(Number(e.target.value))} disabled
-                    />
+                    /> */}
 
                     {/* Upload Button */}
                     <div className="addmember-upload-photo">

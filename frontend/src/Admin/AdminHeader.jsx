@@ -13,7 +13,7 @@ export default function Admin_Header(){
     return(
     <header className="login-header" style={{ backgroundImage: `url(${headerBg})` }}>
         <h1 className="header-title">
-          <span className="header-title-blue">YSES</span> HR HUB
+          <span className="header-title-blue">YSES</span> HR HUB (ADMIN)
         </h1>
         <button onClick={handleClick} className="header-login-btn">
           <img src={loginIcon} alt="Login Icon" />
