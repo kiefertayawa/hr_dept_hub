@@ -78,8 +78,6 @@ export default function Admin_FamilyTree() {
             // y0 and y1 are the vertical boundaries
             // do not change nodeOut variable, only ints
 
-            console.log(nodeOut)
-
             chartRef.current
             .zoomTreeBounds({
                 x0:nodeOut.x0  -  80,
