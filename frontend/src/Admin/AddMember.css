@@ -1,3 +1,5 @@
+
+/* form comprises the whole form */
 .form {
     display: flex;
     justify-content: center;
@@ -13,10 +15,12 @@
     position: relative;
 }
 
+/* all buttons inside form */
 .form button{
     justify-content: center;
 }
 
+/* exit button */
 .addmember-exit-button {
     margin-left: 20px;
     margin-top: 10px;
@@ -37,6 +41,7 @@
     z-index: 5;
 }
 
+/*  */
 .addmember-upload-pic {
     display: flex;
     flex-direction: column;
@@ -46,6 +51,7 @@
     margin-top: 10px;
 }
 
+/* whole div containing left hand side */
 .addmember-upload-photo {
     display: flex;
     flex-direction: row;
@@ -54,6 +60,7 @@
     margin-left: 10px;
 }
 
+/* btm */
 .addmember-upload-btn {
     margin-top: 10px;
     font-size: 15px;
@@ -82,12 +89,13 @@
     background: #00509e;
 }
 
+/* right hand side */
 .details {
     display: flex;
     flex-direction: column;
 }
 
-
+/* rhs labels */
 .addmember-label {
     margin-top: 5px;
     margin-left: 12px;
@@ -97,6 +105,7 @@
     font-weight: bold;
 }
 
+/* rhs inputs */
 .addmember-input{
     margin-left: 10px;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
