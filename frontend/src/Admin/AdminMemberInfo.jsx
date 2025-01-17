@@ -56,7 +56,6 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
                             withCredentials: true,
                         }
                     );
-                    alert("Member added successfully!");
                 }else{
                     console.error("Must be logged in")
                     return
