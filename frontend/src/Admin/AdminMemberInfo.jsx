@@ -85,7 +85,7 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
             withCredentials: true,
             }
         );
-
+        refreshUI()
         alert("Member deleted successfully!");
         } catch (error) {
         console.error("Error deleting member:", error);
