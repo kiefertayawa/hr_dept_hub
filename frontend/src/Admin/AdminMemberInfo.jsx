@@ -70,25 +70,27 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
     };
 
 
-    // TODO: I commented out the delete handler because it may break the db kahit isang wrong click huhu. but it is fully functional
+    // it may break the db kahit isang wrong click huhu. but it is fully functional
     // Function to handle the deletion of a product
     const handleDeleteMember = async (memberId) => {
-        // try {
-        // console.log("product id: ", memberId);
-        // await axios.delete(
-        //     `http://localhost:4000/api/member/delete-member-by-id`,
-        //     {
-        //     data: { _id: memberId },
-        //     withCredentials: true,
-        //     }
-        // );
+        try {
+        console.log("product id: ", memberId);
+        await axios.delete(
+            `http://localhost:4000/api/member/delete-member-by-id`,
+            {
+            data: { _id: memberId },
+            headers: { "Content-Type": "multipart/form-data",
+                'Authorization': `Bearer ${user.token}`
+             },
+            withCredentials: true,
+            }
+        );
 
-        // alert("Member deleted successfully!");
-        //REFRESH UI
-        // } catch (error) {
-        // console.error("Error deleting member:", error);
-        // alert("Failed to delete member. Please try again.");
-        // }
+        alert("Member deleted successfully!");
+        } catch (error) {
+        console.error("Error deleting member:", error);
+        alert("Failed to delete member. Please try again.");
+        }
     };
 
     // Handle image change
@@ -101,7 +103,6 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
     };
 
     // Function to handle form submission.
-    // TODO: handle level
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
@@ -121,7 +122,6 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
     };
 
     // Function to handle adding new member
-    // TODO: handle level
     const handleEditMember = async (updatedMember) => {
         try {
             const formData = new FormData();
