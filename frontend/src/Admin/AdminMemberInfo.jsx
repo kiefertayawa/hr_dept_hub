@@ -26,7 +26,7 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
             .then((bloodline) => {
                 // console.log(bloodline)
                 data[index] = bloodline
-                chartRef.current.data(bloodline).render()
+                chartRef.current.data(bloodline).expandAll().render()
             })
     }
 
