@@ -7,17 +7,20 @@ import { useState, useEffect  } from "react";
 import "./AdminMemberInfo.css";
 import axios from "axios";
 
-export default function AdminMemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
+export default function AdminMemberInfo({exit, parentId, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
     const [isAddingMember, showAddMember] = useState(false);
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
     const [newCollegeBatch, setCollegeBatch] = useState(collegeBatch);
     const [newLevel, setLevel] = useState(Number(level));
     // const [newLevel, setLevel] = useState(Number(1)); {/*use yung commented out level, para magamit yung info*/ }
-    
+    const [fileName, setFileName] = useState("UPLOAD PIC");
+    const [image, setImage] = useState(null);
+
+        
     // Function to handle adding new member
     const handleAddMember = async (newMember) => {
-        try {            
+        try {   
                 // Add new member
                 const formData = new FormData();
                 formData.append("parentId", newMember.parentId);
@@ -29,14 +32,12 @@ export default function AdminMemberInfo({exit, name, ysesBatch, collegeBatch, me
                 formData.append("image", newMember.image);
 
                 await axios.post(
-                "http://localhost:4000/api/upload/upload-member-image",   // THIS IS WHERE YOU UPLOAD
-                formData,
-                {
-                    headers: {
-                    "Content-Type": "multipart/form-data",
-                    },
-                    withCredentials: true,
-                }
+                    "http://localhost:4000/api/upload/upload-member-image",   // THIS IS WHERE YOU UPLOAD
+                    formData,
+                    {
+                        headers: { "Content-Type": "multipart/form-data",},
+                        withCredentials: true,
+                    }
                 );
                 alert("Member added successfully!");
             
@@ -52,21 +53,75 @@ export default function AdminMemberInfo({exit, name, ysesBatch, collegeBatch, me
     // TODO: I commented out the delete handler because it may break the db kahit isang wrong click huhu. but it is fully functional
     // Function to handle the deletion of a product
     const handleDeleteMember = async (memberId) => {
-        // try {
-        // console.log("product id: ", memberId);
-        // await axios.delete(
-        //     `http://localhost:4000/api/member/delete-member-by-id`,
-        //     {
-        //     data: { _id: memberId },
-        //     withCredentials: true,
-        //     }
-        // );
+        try {
+        console.log("product id: ", memberId);
+        await axios.delete(
+            `http://localhost:4000/api/member/delete-member-by-id`,
+            {
+            data: { _id: memberId },
+            withCredentials: true,
+            }
+        );
 
-        // alert("Member deleted successfully!");
-        // } catch (error) {
-        // console.error("Error deleting member:", error);
-        // alert("Failed to delete member. Please try again.");
-        // }
+        alert("Member deleted successfully!");
+        } catch (error) {
+        console.error("Error deleting member:", error);
+        alert("Failed to delete member. Please try again.");
+        }
+    };
+
+    // Handle image change
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setFileName(file.name); // Display file name
+            setImage(file);         // Store the file for upload
+        }
+    };
+
+    // Function to handle form submission.
+    // TODO: handle level
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+
+        // Create an object representing the updated or new product.
+        const updatedMember = {
+            newName,
+            newCollegeBatch,
+            newYsesBatch,
+            image
+            // _id: null,
+            // parentId,
+            // bloodline,
+            // mentor,
+        };
+        handleEditMember(updatedMember);
+    };
+
+    // Function to handle adding new member
+    // TODO: handle level
+    const handleEditMember = async (updatedMember) => {
+        try {
+            const formData = new FormData();
+            formData.append("_id", _id);
+            formData.append("name", updatedMember.newName);
+            formData.append("collegeBatch", updatedMember.newCollegeBatch);
+            formData.append("ysesBatch", updatedMember.newYsesBatch);
+            formData.append("mentor", mentor);
+            formData.append("image", updatedMember.image);
+        
+            await axios.put(
+                `http://localhost:4000/api/member/update-member-by-id`,
+                formData,
+                { withCredentials: true }
+            );
+        
+            alert("Member updated successfully!");
+            } catch (error) {
+            console.error("Error updating member:", error);
+            alert("Failed to update member.");
+            }
+        showAddMember(false);
     };
 
 
@@ -90,14 +145,26 @@ export default function AdminMemberInfo({exit, name, ysesBatch, collegeBatch, me
                         ✖
                     </button>
                     <div className="image-container">
-                        <img src={imageUrl || memberImg} className="meminfo-member-image" />
-                        <div className="meminfo-upload-section">
-                            <img src={uploadIcon} alt="Upload Icon" className="meminfo-upload-icon" />
+                        <img src={imageUrl || memberImg} className="meminfo-member-image" alt="Member" />
+
+                        {/* Upload Button */}
+                        <div className="upload-section">
+                            <img src={uploadIcon} alt="Upload Icon" className="upload-icon" />
+                            <label htmlFor="file-upload" className="upload-pic-button">
+                                {fileName}
+                            </label>
+                            <input
+                                id="file-upload"
+                                type="file"
+                                onChange={handleFileChange}
+                                accept="image/*"
+                                style={{ display: "none" }} // Hide the input
+                            />
                         </div>
-                        <button className="meminfo-upload-pic-button">UPLOAD PIC</button>
                     </div>
-                    <form className="fields-container">
-                        <label className="meminfo-label" htmlFor="mentor">MENTOR</label><input className="meminfo-input" type="text" id="mentor" value={mentor} disabled/>
+
+                    <form className="fields-container" onSubmit={handleFormSubmit}>
+                    <label className="meminfo-label" htmlFor="mentor">MENTOR</label><input className="meminfo-input" type="text" id="mentor" value={mentor} disabled/>
                         <label className="meminfo-label" htmlFor="name">NAME</label><input className="meminfo-input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)}/>
                         <label className="meminfo-label" htmlFor="yses-batch">YSES BATCH</label><input className="meminfo-input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)}/>
                         <label className="meminfo-label" htmlFor="college-batch">COLLEGE BATCH</label><input className="meminfo-input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)}/>

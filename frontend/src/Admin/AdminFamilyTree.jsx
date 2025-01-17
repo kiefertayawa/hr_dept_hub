@@ -84,6 +84,7 @@ export default function Admin_FamilyTree() {
 
                 {/* this is where the params are passed */}
                 {nodeInfo && <AdminMemberInfo exit={setNodeInfo} 
+                parentId={nodeInfo.parentId}
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
                 collegeBatch={nodeInfo.collegeBatch}

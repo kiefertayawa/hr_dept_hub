@@ -81,6 +81,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
+    width: auto; 
+    max-width: 200px; 
 }
 
 .addmember-upload-btn:hover {

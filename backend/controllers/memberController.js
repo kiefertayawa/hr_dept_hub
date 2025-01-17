@@ -1,5 +1,11 @@
 import Member from '../models/memberModel.js'
 import mongoose from 'mongoose'
+import fs from 'fs';
+
+import { v2 as cloudinary } from 'cloudinary';
+import cloudinaryConfig from '../config/cloudinaryConfig.js';
+
+cloudinary.config(cloudinaryConfig);
 
 // Sets the bloodline of each member, run only once
 // Modified to add mentor's name to each member object
@@ -95,22 +101,50 @@ const getMemberById = async (req, res) => {
 
 // For updating member details
 const updateMemberById = async (req, res) => {
-    const {id} =  req.params
+    console.log("Update member by id");
+    try {         
+        console.log('Request body:', req.body);
+        console.log('Uploaded file:', req.file);
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'Member does not exist'})
+    // Default placeholder image URL
+    const placeholderImageUrl = '/pfp-placeholder.jpeg'; // location of placeholder image
+
+    let imageUrl;
+
+    if (req.file) {
+        // Upload to Cloudinary if a file is provided
+        const result = await cloudinary.uploader.upload(req.file.path);
+        console.log("Cloudinary Upload Result:", result);
+
+        imageUrl = result.secure_url;
+
+        // Remove the temporary file
+        fs.unlink(req.file.path, (err) => {
+            if (err) console.error('Failed to delete local file:', err);
+        });
+    } else {
+        // Use the placeholder if no file is uploaded
+        imageUrl = placeholderImageUrl;
     }
 
-    const updatedMember = await Member.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
-    
+    const { _id, name, collegeBatch, ysesBatch, mentor } = req.body;
+    const updatedMember = await Member.findByIdAndUpdate(
+        _id,
+        { name, collegeBatch, ysesBatch, mentor, imageUrl },
+        { new: true }
+    );
+
     if (!updatedMember) {
-        return res.status(400).json({error: 'Member does not exist'})
+        return res.status(404).json({ error: 'Member not found' });
     }
 
-    res.status(200).json(updatedMember)  
-}
+    res.status(200).json(updatedMember);
+    console.log("res.body: ", updatedMember);
+    } catch (error) {
+        console.error('Error updating member:', error);
+        res.status(500).json({ error: 'Server Error' });
+    }
+};
 
 
 
@@ -118,17 +152,18 @@ const updateMemberById = async (req, res) => {
 const deleteMemberById = async (req, res) => {
     console.log("Delete member by id");
     try {
-      console.log("req.body: ", req.body);
-      const deletedMember = await Member.findByIdAndDelete(req.body._id);
-      console.log("deleted product: ", deletedMember);
-      if (!deletedMember) {
-        return res.status(404).json({ error: "Member not found" });
-      }
-  
-      res.json({ message: "Member deleted successfully" });
+        console.log("req.body: ", req.body);
+
+        const deletedMember = await Member.findByIdAndDelete(req.body._id);
+        
+        if (!deletedMember) {
+            return res.status(404).json({ error: "Member not found" });
+        }
+    
+        res.json({ message: "Member deleted successfully" });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Server Error" });
+        console.error(error);
+        res.status(500).json({ error: "Server Error" });
     }
 
 }

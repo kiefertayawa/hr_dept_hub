@@ -1,4 +1,6 @@
 import express from 'express'
+import multer from 'multer';
+
 import memberController from '../controllers/memberController.js'
 
 const router = express.Router()
@@ -15,14 +17,17 @@ router.get('/get-member-by-id/:id', memberController.getMemberById)
 // router.post('/add-new-member', memberController.addMember)
 
 
-// PATCH member detail
-// TODO: Need to restrict to admin
-router.patch('/update-member-by-id/:id', memberController.updateMemberById)
-
-
 // DELETE a single member
+// TODO: Need to restrict to admin
 router.delete('/delete-member-by-id', memberController.deleteMemberById)
 
+
+// Configure multer for file uploads
+const upload = multer({ dest: 'uploads/' }); // Set the destination folder for storing temporary files
+
+// PUT member detail
+// TODO: Need to restrict to admin
+router.put('/update-member-by-id', upload.single('image'), memberController.updateMemberById)
 
 
 

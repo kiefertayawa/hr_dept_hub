@@ -65,33 +65,44 @@
     left: 3%;
 }
 
-.meminfo-upload-section {
+.upload-section {
     position: absolute;
-    bottom: 5.5%;
-    left: 32%;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
+    gap: 10px; /* Adds space between the icon and label */
 }
 
-.meminfo-upload-icon {
+.upload-icon {
     width: 42px;
     height: 42px;
 }
 
-.meminfo-upload-pic-button {
-    position: absolute;
-    bottom: 5%;
-    left: 43%;
+.upload-pic-button {
     background-color: #e5e6e8;
     color: #003366;
     border: none;
     border-radius: 40px;
     padding: 10px 20px;
     font-size: 20px;
-    height: 50px;
+    cursor: pointer;
+    display: inline-block;
+    width: auto; 
+    max-width: 300px; 
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap; 
 }
 
-/* right hand side, containing the infos */
+.upload-pic-button:hover {
+    color: white;
+    outline: none;
+    background: #00509e;
+}
+
+
 .fields-container { 
     /* border: 2px solid #003366; */
     display: flex;
