@@ -20,13 +20,8 @@ router.get('/get-member-by-id/:id', memberController.getMemberById)
 router.patch('/update-member-by-id/:id', memberController.updateMemberById)
 
 
-// // DELETE a single member
-// router.delete('/:id', memberController.deleteMember)
-
-
-
-
-
+// DELETE a single member
+router.delete('/delete-member-by-id', memberController.deleteMemberById)
 
 
 

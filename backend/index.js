@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import path from 'path';
+import cors from 'cors';
 import { fileURLToPath } from 'url';
 
 import memberRoutes from './routes/memberRouter.js'
@@ -23,6 +24,11 @@ const PORT = 4000 //process.env.PORT
 // Express app
 const app = express()
 
+app.use(cors({
+    origin: 'http://localhost:5173',    // This should be the url of the client/frontend when deployed
+    credentials: true                   // Allow credentials (cookies) to be sent with requests
+  }));
+
 // Middleware
 app.use(express.json())
 
@@ -30,6 +36,7 @@ app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
+
 
 
 mongoose.connect(MONGO_URI)

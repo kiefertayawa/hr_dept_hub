@@ -40,23 +40,6 @@ const getFamilyTree = async (req, res) => {
         for (const charterMember of charterMembers) {
             const bloodline = await Member.find({ bloodline: charterMember.id });
 
-            // // Add mentor names dynamically to each member
-            // const bloodlineWithMentors = await Promise.all(
-            //     bloodline.map(async (member) => {
-            //         if (member.parentId) {
-            //             const mentor = await Member.findOne({ id: member.parentId });
-            //             return {
-            //                 ...member.toObject(),
-            //                 mentor: mentor ? mentor.name : null, // Dynamically add mentor's name
-            //             };
-            //         }
-            //         return {
-            //             ...member.toObject(),
-            //             mentor: null, // If no parentId, no mentor
-            //         };
-            //     })
-            // );
-
             toSend.push(bloodline);
         }
 
@@ -69,9 +52,6 @@ const getFamilyTree = async (req, res) => {
         res.status(400).json(error);
     }
 };
-
-
-
 
 
 
@@ -134,22 +114,25 @@ const updateMemberById = async (req, res) => {
 
 
 
-// // For deleting a single member
-// const deleteMember = async (req, res) => {
-//     const {id} =  req.params
+// For deleting a single member
+const deleteMemberById = async (req, res) => {
+    console.log("Delete member by id");
+    try {
+      console.log("req.body: ", req.body);
+      const deletedMember = await Member.findByIdAndDelete(req.body._id);
+      console.log("deleted product: ", deletedMember);
+      if (!deletedMember) {
+        return res.status(404).json({ error: "Member not found" });
+      }
+  
+      res.json({ message: "Member deleted successfully" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Server Error" });
+    }
 
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//         return res.status(404).json({error: 'Member does not exist'})
-//     }
+}
 
-//     const member = await Member.findOneAndDelete({_id: id})
-    
-//     if (!member) {
-//         return res.status(400).json({error: 'Member does not exist'})
-//     }
-
-//     res.status(200).json(member)    
-// }
 
 
 
@@ -159,6 +142,6 @@ export default  {
     getFamilyTree, 
     getMemberById, 
     // addMember,
-    updateMemberById
-    // deleteMember,
+    updateMemberById,
+    deleteMemberById,
 }

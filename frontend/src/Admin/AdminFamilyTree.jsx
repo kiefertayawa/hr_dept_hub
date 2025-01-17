@@ -83,6 +83,7 @@ export default function Admin_FamilyTree() {
                 mentor={nodeInfo.mentor} 
                 level={nodeInfo.level}
 
+                _id={nodeInfo._id}
                 id={nodeInfo.id}
                 bloodline={nodeInfo.bloodline}
                 />}  {/* Add mentor and level info */}
