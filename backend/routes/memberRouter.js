@@ -13,6 +13,9 @@ router.get('/getAll', memberController.getFamilyTree)
 // Get single member
 router.get('/get-member-by-id/:id', memberController.getMemberById)
 
+// Get single bloodline
+router.get('/get-bloodline/:id', memberController.getBloodline)
+
 
 // // POST new member 
 // // (primitive adding of new member; updated one is in upload router)
