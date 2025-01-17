@@ -34,7 +34,8 @@
     font-size: 14px;
     letter-spacing: -0.4px;
     margin: 5px 0;
-    word-wrap: break-word;
+    word-wrap: break-word;    
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 
