@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import * as d3 from 'd3';
 import { OrgChart } from 'd3-org-chart';
-// import MemberInfo from './AdminMemberInfo.jsx';
 import '../FamilyTree/FamilyTree.css';
-// import TreeNode from './TreeNode';
 import leftArrow from '../assets/arrow-left.png'
 import rightArrow from '../assets/arrow-right.png'
 import Search from '../FamilyTree/Search.jsx';
