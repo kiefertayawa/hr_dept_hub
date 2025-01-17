@@ -14,20 +14,17 @@ export default function AddMember({exit, mentor, level, parentId, bloodline, onS
     const [image, setImage] = useState(null);
     const [fileName, setFileName] = useState("UPLOAD PIC");
 
-    // Handle image upload
-    const handleImageChange = (e) => {
-        setImage(e.target.files[0]);
-    };
+    // Handle image change
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            setFileName(file.name); 
+            setFileName(file.name); // Display file name
+            setImage(file);         // Store the file for upload
         }
-        handleImageChange(event); 
     };
 
     // Function to handle form submission.
-    // TODO: handle proper id, level, 
+    // TODO: handle level, 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 

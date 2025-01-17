@@ -8,6 +8,7 @@ cloudinary.config(cloudinaryConfig);
 
 // Image upload handler
 const uploadMemberImage = async (req, res) => {
+  console.log("Adding new member");
   try {
     console.log('Request body:', req.body);
     console.log('Uploaded file:', req.file);
@@ -53,7 +54,8 @@ const uploadMemberImage = async (req, res) => {
 
     await newMember.save();
 
-    res.status(201).json({ success: true, message: 'Member added successfully', imageUrl });
+    res.status(201).json({ success: true, message: 'Member added successfully', imageUrl });    
+    console.log("res.body: ", newMember);
   } catch (error) {
     console.error('Server Error uploading image:', error);
     res.status(500).json({ success: false, message: 'Failed to upload image' });

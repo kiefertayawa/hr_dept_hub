@@ -61,6 +61,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
+    width: auto; 
+    max-width: 200px; 
 }
 
 .upload-btn:hover {

@@ -82,6 +82,7 @@ export default function Admin_FamilyTree() {
             <div className={`info-container ${nodeInfo ? 'visible' : 'hidden'}`}>
 
                 {nodeInfo && <MemberInfo exit={setNodeInfo} 
+                parentId={nodeInfo.parentId}
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
                 collegeBatch={nodeInfo.collegeBatch}
