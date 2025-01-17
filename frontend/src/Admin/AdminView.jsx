@@ -13,23 +13,6 @@ function AdminView() {
       <Admin_Header/>
       <Admin_FamilyTree />
     </>
-   
-    // <div className='App'>
-    //   <BrowserRouter>     
-    //     <div className='pages'>
-    //       <Routes>
-    //         <Route
-    //           path="/"
-    //           element={<Login />}
-    //         />
-
-    //       </Routes>
-
-    //     </div>
-    //   </BrowserRouter>
-      
-
-    // </div>
   )
 }
 
