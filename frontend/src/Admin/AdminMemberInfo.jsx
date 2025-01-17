@@ -74,14 +74,12 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
     // Function to handle the deletion of a product
     const handleDeleteMember = async (memberId) => {
         try {
-        console.log("product id: ", memberId);
+        console.log("member id: ", memberId);
         await axios.delete(
             `http://localhost:4000/api/member/delete-member-by-id`,
             {
+            headers: {'Authorization': `Bearer ${user.token}`},
             data: { _id: memberId },
-            headers: { "Content-Type": "multipart/form-data",
-                'Authorization': `Bearer ${user.token}`
-             },
             withCredentials: true,
             }
         );
@@ -113,10 +111,7 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
             newYsesBatch,
             image,
             imageUrl,
-            // _id: null,
-            // parentId,
             bloodline,
-            // mentor,
         };
         handleEditMember(updatedMember);
     };

@@ -16,6 +16,7 @@ router.get('/get-member-by-id/:id', memberController.getMemberById)
 // Get single bloodline
 router.get('/get-bloodline/:id', memberController.getBloodline)
 
+
 // limits certain crud functions for admin use only
 router.use(adminPrivilages)
 
