@@ -7,7 +7,7 @@ import { useState, useEffect  } from "react";
 import "./AdminMemberInfo.css";
 import axios from "axios";
 
-export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline}){
+export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
     const [isAddingMember, showAddMember] = useState(false);
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
@@ -90,7 +90,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor,
                         ✖
                     </button>
                     <div className="image-container">
-                        <img src={memberImg} className="member-image" />
+                        <img src={imageUrl || memberImg} className="member-image" />
                         <div className="upload-section">
                             <img src={uploadIcon} alt="Upload Icon" className="upload-icon" />
                         </div>
