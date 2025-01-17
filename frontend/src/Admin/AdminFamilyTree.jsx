@@ -104,7 +104,10 @@ export default function Admin_FamilyTree() {
             <div className={`info-container ${nodeInfo ? 'visible' : 'hidden'}`}>
 
                 {/* this is where the params are passed */}
-                {nodeInfo && <AdminMemberInfo exit={setNodeInfo} 
+                {nodeInfo && <AdminMemberInfo exit={setNodeInfo}
+                index={index} 
+                data={data}
+                chartRef={chartRef}
                 parentId={nodeInfo.parentId}
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 

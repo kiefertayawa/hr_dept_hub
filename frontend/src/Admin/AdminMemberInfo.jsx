@@ -7,8 +7,9 @@ import { useState, useEffect  } from "react";
 import "./AdminMemberInfo.css";
 import axios from "axios";
 import { useAuthContext  } from "../../hooks/useAuthContext";
+import * as d3 from 'd3';
 
-export default function AdminMemberInfo({exit, parentId, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
+export default function AdminMemberInfo({index,data,chartRef,exit, parentId, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
     const [isAddingMember, showAddMember] = useState(false);
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
@@ -18,6 +19,16 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
     const [fileName, setFileName] = useState("UPLOAD PIC");
     const [image, setImage] = useState(null);
     const {user} = useAuthContext()
+
+
+    const refreshUI = async(member) => {
+        d3.json(`http://localhost:4000/api/member/get-bloodline/${member.bloodline}`)
+            .then((bloodline) => {
+                // console.log(bloodline)
+                data[index] = bloodline
+                chartRef.current.data(bloodline).render()
+            })
+    }
 
         
     // Function to handle adding new member
@@ -51,8 +62,7 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
                     return
                 }
                 alert("Member added successfully!");
-            
-                // fetchMembers(); // Refresh products after save
+                refreshUI(newMember)
             } catch (error) {
                 console.error("Error adding member:", error);
                 // alert("Failed to add member. Please try again.");
@@ -75,6 +85,7 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
         // );
 
         // alert("Member deleted successfully!");
+        //REFRESH UI
         // } catch (error) {
         // console.error("Error deleting member:", error);
         // alert("Failed to delete member. Please try again.");
@@ -104,7 +115,7 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
             imageUrl,
             // _id: null,
             // parentId,
-            // bloodline,
+            bloodline,
             // mentor,
         };
         handleEditMember(updatedMember);
@@ -140,6 +151,8 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
      
         
             alert("Member updated successfully!");
+            refreshUI(updatedMember)
+
             } catch (error) {
             console.error("Error updating member:", error);
             alert("Failed to update member.");
