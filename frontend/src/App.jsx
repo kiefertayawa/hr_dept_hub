@@ -30,14 +30,13 @@ function App() {
       </video>
       <Header loginClick={setLogin}/>
       {user ? (
-        <App /> // Show AdminView when logged in
+        <AdminView /> // Show AdminView when logged in
       ) : (
       <>
         { login && <Login /> }
         { !login && <FamilyTree />}
       </>
-   
-  )}
+       )}
   </>
   )
 }

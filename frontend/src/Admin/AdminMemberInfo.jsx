@@ -6,6 +6,7 @@ import AddMember from "./AddMember"
 import { useState, useEffect  } from "react";
 import "./AdminMemberInfo.css";
 import axios from "axios";
+import { useAuthContext  } from "../../hooks/useAuthContext";
 
 export default function AdminMemberInfo({exit, parentId, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
     const [isAddingMember, showAddMember] = useState(false);
@@ -16,6 +17,7 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
     // const [newLevel, setLevel] = useState(Number(1)); {/*use yung commented out level, para magamit yung info*/ }
     const [fileName, setFileName] = useState("UPLOAD PIC");
     const [image, setImage] = useState(null);
+    const {user} = useAuthContext()
 
         
     // Function to handle adding new member
@@ -31,14 +33,23 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
                 formData.append("mentor", newMember.mentor);
                 formData.append("image", newMember.image);
 
-                await axios.post(
-                    "http://localhost:4000/api/upload/upload-member-image",   // THIS IS WHERE YOU UPLOAD
-                    formData,
-                    {
-                        headers: { "Content-Type": "multipart/form-data",},
-                        withCredentials: true,
-                    }
-                );
+                // if user is uploaded
+                if(user){
+                    await axios.post(
+                        "http://localhost:4000/api/upload/upload-member-image",   // THIS IS WHERE YOU UPLOAD
+                        formData,
+                        {
+                            headers: { "Content-Type": "multipart/form-data",
+                                        'Authorization': `Bearer ${user.token}`
+                            },
+                            withCredentials: true,
+                        }
+                    );
+                    alert("Member added successfully!");
+                }else{
+                    console.error("Must be logged in")
+                    return
+                }
                 alert("Member added successfully!");
             
                 // fetchMembers(); // Refresh products after save
@@ -113,11 +124,20 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
             formData.append("imageUrl", updatedMember.imageUrl);
             
         
-            await axios.put(
-                `http://localhost:4000/api/member/update-member-by-id`,
-                formData,
-                { withCredentials: true }
-            );
+            if(user){
+                await axios.put(
+                    `http://localhost:4000/api/member/update-member-by-id`,
+                    formData,
+                    {
+                        headers: {'Authorization': `Bearer ${user.token}`},
+                        withCredentials: true,
+                    }
+                );
+            }else{
+                console.error("Must be logged in")
+                return
+            }
+     
         
             alert("Member updated successfully!");
             } catch (error) {

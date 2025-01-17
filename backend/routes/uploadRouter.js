@@ -8,7 +8,7 @@ import uploadController from '../controllers/uploadController.js'
 
 const router = express.Router();
 
-router.use(adminPrivilages)
+// router.use(adminPrivilages)
 // const { authenticateUser, authorizeMerchant } = require("../middlewares/authMiddleware");
 
 // Configure multer for file uploads

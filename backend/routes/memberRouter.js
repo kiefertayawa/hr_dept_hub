@@ -6,6 +6,7 @@ import adminPrivilages from '../middleware/authRequired.js'
 
 const router = express.Router()
 
+
 // Get all members
 router.get('/getAll', memberController.getFamilyTree)
 
@@ -21,7 +22,6 @@ router.get('/get-member-by-id/:id', memberController.getMemberById)
 router.use(adminPrivilages)
 
 // DELETE a single member
-// TODO: Need to restrict to admin
 router.delete('/delete-member-by-id', memberController.deleteMemberById)
 
 
