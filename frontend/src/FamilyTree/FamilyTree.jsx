@@ -77,6 +77,9 @@ export default function FamilyTree() {
             // x0 and x1 are the horizontal boundaries
             // y0 and y1 are the vertical boundaries
             // do not change nodeOut variable, only ints
+
+            console.log(nodeOut)
+
             chartRef.current.expandAll()
             .zoomTreeBounds({
                 x0:nodeOut.x0  -  80,

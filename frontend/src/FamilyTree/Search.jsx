@@ -24,7 +24,11 @@ export default function Search({data, switchBloodline, chartRef}){
 
     function searchClick(member){
         let index = 0
+        console.log(data)
+        console.log(member.bloodline)
+        console.log(data[index][0].name)
         while(index<data.length){
+            
             if(data[index][0].id === member.bloodline){
                 break
             }
