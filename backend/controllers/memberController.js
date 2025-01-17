@@ -107,7 +107,7 @@ const updateMemberById = async (req, res) => {
         console.log('Uploaded file:', req.file);
 
     // Default placeholder image URL
-    const placeholderImageUrl = '/pfp-placeholder.jpeg'; // location of placeholder image
+    const placeholderImageUrl = req.body.imageUrl; // location of placeholder image
 
     let imageUrl;
 
