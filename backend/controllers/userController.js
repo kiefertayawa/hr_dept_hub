@@ -2,7 +2,7 @@ import User from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 
 
-// .env -> TOKEN=jpadhrdepthub2025
+
 const createToken = (_id) => {
     return jwt.sign({_id}, process.env.TOKEN, { expiresIn: '3d'})
 
@@ -10,7 +10,7 @@ const createToken = (_id) => {
 
 // login user
 const loginUser = async (req, res) => {
-    const { email, password } = req.body
+    const {username, password} = req.body
 
     try{
         const user = await User.login(username, password)
@@ -34,7 +34,7 @@ const signupUser = async (req, res) => {
 
         // create token
         const token = createToken(user._id)
-
+        
         res.status(200).json({email, username, token})
 
     }catch(error){

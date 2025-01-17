@@ -1,9 +1,14 @@
 import express from 'express'
 import multer from 'multer';
-
+import adminPrivilages from '../middleware/authRequired.js'
 import uploadController from '../controllers/uploadController.js'
 
+// restricts usage of CRUD functions to admin
+
+
 const router = express.Router();
+
+router.use(adminPrivilages)
 // const { authenticateUser, authorizeMerchant } = require("../middlewares/authMiddleware");
 
 // Configure multer for file uploads
@@ -13,7 +18,6 @@ const upload = multer({ dest: 'uploads/' }); // Set the destination folder for s
 // router.use(authenticateUser);
 
 // Route to upload image 
-// TODO: Need to restrict to admin
 router.post("/upload-member-image", upload.single('image'), uploadController.uploadMemberImage);
 
 export default router
