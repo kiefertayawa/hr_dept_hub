@@ -191,7 +191,7 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
                         <label className="meminfo-label" htmlFor="name">NAME</label><input className="meminfo-input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)} required/>
                         <label className="meminfo-label" htmlFor="yses-batch">YSES BATCH</label><input className="meminfo-input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)} required/>
                         <label className="meminfo-label" htmlFor="college-batch">COLLEGE BATCH</label><input className="meminfo-input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)} required/>
-                        <label className="meminfo-label" htmlFor="level">LEVEL</label><input className="meminfo-input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/>
+                        {/* <label className="meminfo-label" htmlFor="level">LEVEL</label><input className="meminfo-input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/> */}
                         
                         <button type="submit" className="meminfo-save-button">SAVE</button>
                     </form>
