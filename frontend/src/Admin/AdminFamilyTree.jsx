@@ -58,15 +58,36 @@ export default function Admin_FamilyTree() {
     useLayoutEffect(() => generateChart(), [data, d3Container]);
     
     function switchBloodline(index, id=0) {
-        if (data && index >= 0 && index < data.length)
-        {
+        if (data && index >= 0 && index < data.length){
+
             setIndex(index)
-            chartRef.current.data(data[index]).expandAll().render()
-            // chartRef.current.setExpanded("71").setCentered("71").render()
-            // console.log(index+direction)
-        }
-        if (id){
-            chartRef.current.setExpanded(id).setCentered(id).render()
+
+            id ? id : id = data[index][0].id
+
+            chartRef.current.data(data[index]).expandAll()
+
+            let nodeOut = null
+        
+            for(const node of chartRef.current.getChartState().allNodes){
+                if(node.id === id) { nodeOut = node }
+            }
+
+            // Magnitude of zoom, feel free to adjust
+            // (0,0) is the top mid of the node
+            // x0 and x1 are the horizontal boundaries
+            // y0 and y1 are the vertical boundaries
+            // do not change nodeOut variable, only ints
+
+            console.log(nodeOut)
+
+            chartRef.current
+            .zoomTreeBounds({
+                x0:nodeOut.x0  -  80,
+                x1:nodeOut.x   +  80,
+                y0:nodeOut.y0  +  0,
+                y1:nodeOut.y   +  600,
+            })
+
         }
     }
 

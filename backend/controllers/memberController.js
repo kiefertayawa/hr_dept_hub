@@ -44,7 +44,16 @@ const getFamilyTree = async (req, res) => {
 
         // Grabs all the descendants of each charter member and puts them in a bloodline
         for (const charterMember of charterMembers) {
-            const bloodline = await Member.find({ bloodline: charterMember.id });
+            const bloodline = [];
+            bloodline.push(charterMember)
+            
+            const arr = await Member.find({ bloodline: charterMember.id })
+            
+            arr.forEach(member => {
+                if (member.id !== charterMember.id){
+                    bloodline.push(member)
+                }
+            })
 
             toSend.push(bloodline);
         }
