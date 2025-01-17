@@ -53,21 +53,21 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
     // TODO: I commented out the delete handler because it may break the db kahit isang wrong click huhu. but it is fully functional
     // Function to handle the deletion of a product
     const handleDeleteMember = async (memberId) => {
-        try {
-        console.log("product id: ", memberId);
-        await axios.delete(
-            `http://localhost:4000/api/member/delete-member-by-id`,
-            {
-            data: { _id: memberId },
-            withCredentials: true,
-            }
-        );
+        // try {
+        // console.log("product id: ", memberId);
+        // await axios.delete(
+        //     `http://localhost:4000/api/member/delete-member-by-id`,
+        //     {
+        //     data: { _id: memberId },
+        //     withCredentials: true,
+        //     }
+        // );
 
-        alert("Member deleted successfully!");
-        } catch (error) {
-        console.error("Error deleting member:", error);
-        alert("Failed to delete member. Please try again.");
-        }
+        // alert("Member deleted successfully!");
+        // } catch (error) {
+        // console.error("Error deleting member:", error);
+        // alert("Failed to delete member. Please try again.");
+        // }
     };
 
     // Handle image change
