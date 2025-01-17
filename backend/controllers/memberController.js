@@ -128,21 +128,6 @@ const getBloodline = async(req, res) => {
     res.status(200).json(bloodline) 
 }
 
-// // For adding new member
-// // (primitive adding of new member; updated one is in upload router)
-// const addMember = async (req, res) => {
-//     const {id, parentId, name, collegeBatch, ysesBatch, bloodline} = req.body
-
-//     try {
-//         const member = await Member.create({id, parentId, name, collegeBatch, ysesBatch, bloodline})
-//         res.status(200).json(member)
-//     } catch (error) {
-//         console.log(error)
-//         res.status(400).json({error: error.message})
-//     }    
-// }
-
-
 // For updating member details
 const updateMemberById = async (req, res) => {
     console.log("Update member by id");
@@ -221,7 +206,6 @@ export default  {
     getFamilyTree, 
     getMemberById,
     getBloodline, 
-    // addMember,
     updateMemberById,
     deleteMemberById,
 }
