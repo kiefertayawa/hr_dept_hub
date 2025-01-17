@@ -92,7 +92,7 @@ export default function Admin_FamilyTree() {
                 id={nodeInfo.id}
                 bloodline={nodeInfo.bloodline}
                 imageUrl={nodeInfo.imageUrl}
-                />}  {/* Add mentor and level info */}
+                />}  
             </div> 
         </>
     )

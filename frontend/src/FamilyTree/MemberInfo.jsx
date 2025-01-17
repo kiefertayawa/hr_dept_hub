@@ -2,7 +2,7 @@ import InfoField from "./InfoField";
 import memberImg from "../assets/default pic.jpeg";
 import "./MemberInfo.css";
 
-export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}){
+export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
     return (
         <div className="member-container">
             <button
@@ -14,7 +14,7 @@ export default function MemberInfo({exit, name, ysesBatch, collegeBatch, mentor}
             ✖
             </button>
             <div className="image-container">
-                <img src={memberImg} className="member-image" />
+                <img src={imageUrl || memberImg} className="member-image" />
             </div>
             <div className="fields-container">
             <InfoField label={"NAME"} data={name} labelClass="custom-label" />
