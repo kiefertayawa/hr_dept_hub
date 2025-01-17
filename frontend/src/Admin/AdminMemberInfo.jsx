@@ -166,7 +166,7 @@ export default function AdminMemberInfo({exit, parentId, name, ysesBatch, colleg
                         </div>
                     </div>
 
-                    <form className="fields-container" onSubmit={handleFormSubmit}>
+                    <form className="admin-fields-container" onSubmit={handleFormSubmit}>
                     <label className="meminfo-label" htmlFor="mentor">MENTOR</label><input className="meminfo-input" type="text" id="mentor" value={mentor} disabled/>
                         <label className="meminfo-label" htmlFor="name">NAME</label><input className="meminfo-input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)} required/>
                         <label className="meminfo-label" htmlFor="yses-batch">YSES BATCH</label><input className="meminfo-input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)} required/>

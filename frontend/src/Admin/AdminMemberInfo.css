@@ -87,6 +87,8 @@
     border-radius: 40px;
     padding: 10px 20px;
     font-size: 20px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 750;
     cursor: pointer;
     display: inline-block;
     width: auto; 
@@ -103,7 +105,7 @@
 }
 
 
-.fields-container { 
+.admin-fields-container { 
     /* border: 2px solid #003366; */
     display: flex;
     flex-direction: column;
@@ -114,11 +116,9 @@
     text-align: left;
     align-items: flex-start;
     padding-left:40px;
+    width: 50%;
+    padding-top: 12px;
 }
-
-/* .meminfo-input, .fields-container label {
-    margin-left: 20px;
-} */
 
 /* inputs */
 .meminfo-input {
@@ -131,7 +131,7 @@
     padding-left: 30px ;
     font-size: 16px ;
     width: 85% ;
-    height: 9% ;
+    height: 11% ;
     background-color: #e5e6e8 ;
     margin-bottom: 6px;
 }
@@ -145,9 +145,10 @@
     background-color: #003366 ;
 }
 
-.fields-container label {
+.admin-fields-container label {
     text-align: left;
     margin-left: 5px;
+    margin-top: 5px;
     margin-bottom: 5px;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: bold;
