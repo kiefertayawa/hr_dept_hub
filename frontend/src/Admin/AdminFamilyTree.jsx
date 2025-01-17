@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import * as d3 from 'd3';
 import { OrgChart } from 'd3-org-chart';
-import MemberInfo from './AdminMemberInfo.jsx';
+// import MemberInfo from './AdminMemberInfo.jsx';
 import '../FamilyTree/FamilyTree.css';
 // import TreeNode from './TreeNode';
 import leftArrow from '../assets/arrow-left.png'
@@ -74,6 +74,8 @@ export default function Admin_FamilyTree() {
 
     return (
         <>
+             {/* displays the family tree and the buttons*/}
+
             <div className={`chart-container ${nodeInfo ? 'hidden' : ''}`}>
                 <Search data={data} switchBloodline={switchBloodline} chartRef={chartRef}/>
                 <button className="nav-button left" onClick={() => switchBloodline(index-1)}><img src={leftArrow} alt="<" /></button>
@@ -82,6 +84,7 @@ export default function Admin_FamilyTree() {
             </div>
             <div className={`info-container ${nodeInfo ? 'visible' : 'hidden'}`}>
 
+                {/* this is where the params are passed */}
                 {nodeInfo && <AdminMemberInfo exit={setNodeInfo} 
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
