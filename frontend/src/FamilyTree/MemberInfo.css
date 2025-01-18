@@ -1,3 +1,4 @@
+/* Container for the member info page */
 .member-container {
     display: flex;
     width: 70%;
@@ -10,6 +11,7 @@
     position: relative;
 }
 
+/* Exit button */
 .exit-button {
     color: rgb(255, 255, 255);
     font-weight: bold;
@@ -29,7 +31,7 @@
     z-index:5;
 }
 
-
+/* The image at the left side */
 .image-container {
     justify-content: center;
     align-items: center;
@@ -50,6 +52,7 @@
     left: 3%;
 }
 
+/* Container for all the info fields */
 .app-fields-container { 
     display: flex;
     flex-direction: column;

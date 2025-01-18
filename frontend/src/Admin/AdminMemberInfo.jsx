@@ -9,18 +9,20 @@ import axios from "axios";
 import { useAuthContext  } from "../../hooks/useAuthContext";
 import * as d3 from 'd3';
 
+// Pop up when clicking a node in the family tree
 export default function AdminMemberInfo({index,data,chartRef,exit, parentId, name, ysesBatch, collegeBatch, mentor, level, _id, id, bloodline, imageUrl}){
+    
+    // States and context
     const [isAddingMember, showAddMember] = useState(false);
     const [newName, setName] = useState(name);
     const [newYsesBatch, setYsesBatch] = useState(ysesBatch);
     const [newCollegeBatch, setCollegeBatch] = useState(collegeBatch);
     const [newLevel, setLevel] = useState(Number(level));
-    // const [newLevel, setLevel] = useState(Number(1)); {/*use yung commented out level, para magamit yung info*/ }
     const [fileName, setFileName] = useState("UPLOAD PIC");
     const [image, setImage] = useState(null);
     const {user} = useAuthContext()
 
-
+    // Refreshes UI when data is modified
     const refreshUI = async(bloodlineID) => {
         d3.json(`http://localhost:4000/api/member/get-bloodline/${bloodlineID}`)
             .then((bloodline) => {
@@ -29,7 +31,6 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
             })
     }
 
-        
     // Function to handle adding new member
     const handleAddMember = async (newMember) => {
         try {   
@@ -59,8 +60,10 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
                     console.error("Must be logged in")
                     return
                 }
+
                 alert("Member added successfully!");
                 refreshUI(newMember.bloodline)
+            
             } catch (error) {
                 console.error("Error adding member:", error);
                 // alert("Failed to add member. Please try again.");
@@ -69,9 +72,7 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
         exit(null)
     };
 
-
-    // it may break the db kahit isang wrong click huhu. but it is fully functional
-    // Function to handle the deletion of a product
+   // Function to handle the deletion of a product
     const handleDeleteMember = async (memberId, bloodlineID) => {
         try {
         console.log("member id: ", memberId);
@@ -159,21 +160,25 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
         <>
         {!isAddingMember? (
             <div className="containers-container">
-            
+                
+                {/* Add and delete buttons */}
                 <div className="buttons-container"> 
                     <button className="add-btn" onClick={()=>{showAddMember(true);}}><img src={addButton} alt="+"/></button> 
                     <button className="remove-btn" onClick={() => {handleDeleteMember(_id,bloodline); exit(null)}}><img src={removeButton} alt="-"/></button>
                 </div>
                 
+                {/* Member info */}
                 <div className="admin-member-container">
+
+                    {/* Exit button */}
                     <button
                         className="meminfo-exit-button"
                         onClick={() => {
                             exit(null);
                         } }
-                    >
-                        ✖
-                    </button>
+                    >✖</button>
+
+                    {/* Image at the left */}
                     <div className="image-container">
                         <img src={imageUrl || memberImg} className="meminfo-member-image" alt="Member" />
 
@@ -191,20 +196,25 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
                                 style={{ display: "none" }} // Hide the input
                             />
                         </div>
+
                     </div>
 
+                    {/* Info fields */}
                     <form className="admin-fields-container" onSubmit={handleFormSubmit}>
-                    <label className="meminfo-label" htmlFor="mentor">MENTOR</label><input className="meminfo-input" type="text" id="mentor" value={mentor} disabled/>
+                        
+                        <label className="meminfo-label" htmlFor="mentor">MENTOR</label><input className="meminfo-input" type="text" id="mentor" value={mentor} disabled/>
                         <label className="meminfo-label" htmlFor="name">NAME</label><input className="meminfo-input" type="text" id="name" value={newName} onChange={(e) => setName(e.target.value)} required/>
                         <label className="meminfo-label" htmlFor="yses-batch">YSES BATCH</label><input className="meminfo-input" type="text" id="yses-batch" value={newYsesBatch} onChange={(e) => setYsesBatch(e.target.value)} required/>
                         <label className="meminfo-label" htmlFor="college-batch">COLLEGE BATCH</label><input className="meminfo-input" type="text" id="college-batch" value={newCollegeBatch} onChange={(e) => setCollegeBatch(e.target.value)} required/>
-                        {/* <label className="meminfo-label" htmlFor="level">LEVEL</label><input className="meminfo-input" type="number" id="level" value={newLevel} onChange={(e) => setLevel(Number(e.target.value))}/> */}
                         
                         <button type="submit" className="meminfo-save-button">SAVE</button>
+                    
                     </form>
+                    
                 </div>
             </div>
         ) : (
+            // Pop up when adding member
             <AddMember 
                 exit={()=> showAddMember(false)} 
                 mentor={newName} 
