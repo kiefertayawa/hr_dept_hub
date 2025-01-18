@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Search.css";
 
-export default function Search({data, switchBloodline, chartRef}){
+export default function Search({data, switchBloodline}){
     
     // States
     const [suggestions, setSuggestions] = useState([]);
@@ -84,7 +84,7 @@ export default function Search({data, switchBloodline, chartRef}){
                     ))}
                 </div>
             )}
-            
+
         </div>
     );
 }
