@@ -27,7 +27,7 @@ export default function AddMember({exit, mentor, parentId, bloodline, onSave}){
         e.preventDefault();
 
         // Create an object representing the updated or new product.
-        const updatedMember = {
+        const newMember = {
             // _id: null,
             parentId,
             name,
@@ -38,7 +38,7 @@ export default function AddMember({exit, mentor, parentId, bloodline, onSave}){
             image
         };
 
-        onSave(updatedMember);
+        onSave(newMember);
     };
 
 

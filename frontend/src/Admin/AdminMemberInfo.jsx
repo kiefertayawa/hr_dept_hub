@@ -65,7 +65,8 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
                 console.error("Error adding member:", error);
                 // alert("Failed to add member. Please try again.");
             }
-        showAddMember(false); 
+        showAddMember(false);
+        exit(null)
     };
 
 
