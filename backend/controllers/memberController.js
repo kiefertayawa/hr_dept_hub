@@ -185,10 +185,16 @@ const deleteMemberById = async (req, res) => {
 
         const memberToBeDeleted = await Member.findById(req.body._id);
 
+        // Ensures charter members cannot be deleted
+        if(memberToBeDeleted.ysesBatch === 'Charter'){
+            return res.status(404).json({ error: "Do not delete charter members" });
+        }
+
+        // In case member does not exist
         if (!memberToBeDeleted) {
             return res.status(404).json({ error: "Member not found" });
         }
-
+        
         const children = await Member.find({parentId:memberToBeDeleted.id});
 
         children.forEach(async(child) => {
