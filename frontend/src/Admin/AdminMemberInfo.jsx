@@ -21,10 +21,9 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
     const {user} = useAuthContext()
 
 
-    const refreshUI = async(member) => {
-        d3.json(`http://localhost:4000/api/member/get-bloodline/${member.bloodline}`)
+    const refreshUI = async(bloodlineID) => {
+        d3.json(`http://localhost:4000/api/member/get-bloodline/${bloodlineID}`)
             .then((bloodline) => {
-                // console.log(bloodline)
                 data[index] = bloodline
                 chartRef.current.data(bloodline).expandAll().render()
             })
@@ -61,7 +60,7 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
                     return
                 }
                 alert("Member added successfully!");
-                refreshUI(newMember)
+                refreshUI(newMember.bloodline)
             } catch (error) {
                 console.error("Error adding member:", error);
                 // alert("Failed to add member. Please try again.");
@@ -72,7 +71,7 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
 
     // it may break the db kahit isang wrong click huhu. but it is fully functional
     // Function to handle the deletion of a product
-    const handleDeleteMember = async (memberId) => {
+    const handleDeleteMember = async (memberId, bloodlineID) => {
         try {
         console.log("member id: ", memberId);
         await axios.delete(
@@ -83,8 +82,8 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
             withCredentials: true,
             }
         );
-        refreshUI()
         alert("Member deleted successfully!");
+        refreshUI(bloodlineID)
         } catch (error) {
         console.error("Error deleting member:", error);
         alert("Failed to delete member. Please try again.");
@@ -145,7 +144,7 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
      
         
             alert("Member updated successfully!");
-            refreshUI(updatedMember)
+            refreshUI(updatedMember.bloodline)
 
             } catch (error) {
             console.error("Error updating member:", error);
@@ -161,8 +160,8 @@ export default function AdminMemberInfo({index,data,chartRef,exit, parentId, nam
             <div className="containers-container">
             
                 <div className="buttons-container"> 
-                    <button className="add-btn" onClick={()=>{showAddMember(true); exit(null)}}><img src={addButton} alt="+"/></button> 
-                    <button className="remove-btn" onClick={() => {handleDeleteMember(_id); exit(null)}}><img src={removeButton} alt="-"/></button>
+                    <button className="add-btn" onClick={()=>{showAddMember(true);}}><img src={addButton} alt="+"/></button> 
+                    <button className="remove-btn" onClick={() => {handleDeleteMember(_id,bloodline); exit(null)}}><img src={removeButton} alt="-"/></button>
                 </div>
                 
                 <div className="admin-member-container">

@@ -62,9 +62,12 @@ export default function Admin_FamilyTree() {
 
             setIndex(index)
 
-            id ? id : id = data[index][0].id
-
             chartRef.current.data(data[index]).expandAll()
+
+            if(id === 0){
+                chartRef.current.fit()
+                return
+            }
 
             let nodeOut = null
         
@@ -110,8 +113,7 @@ export default function Admin_FamilyTree() {
                 name={nodeInfo.name} 
                 ysesBatch={nodeInfo.ysesBatch} 
                 collegeBatch={nodeInfo.collegeBatch}
-                mentor={nodeInfo.mentor} 
-                level={nodeInfo.level}
+                mentor={nodeInfo.mentor}
 
                 _id={nodeInfo._id}
                 id={nodeInfo.id}
