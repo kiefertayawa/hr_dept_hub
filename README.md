@@ -63,30 +63,30 @@ The HR Department Hub is primarily used to serve as a centralized platform for H
 ### Environment Variables
 Request the necessary credentials from the developers and create the following environment files:
 
-##### ./backend/.env
-MONGO_URI=<your_mongo_uri>
-TOKEN=<your_token>
+` ./backend/.env`
+> MONGO_URI=<your_mongo_uri>
+> TOKEN=<your_token>
+>
+> CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
+> CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+> CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>`
 
-CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
-CLOUDINARY_API_KEY=<your_cloudinary_api_key>
-CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
-
-##### ./credentials.env
-MONGO_URI=<your_mongo_uri>
-TOKEN=<your_token>
-
-CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
-CLOUDINARY_API_KEY=<your_cloudinary_api_key>
-CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+` ./credentials.env`
+> MONGO_URI=<your_mongo_uri>
+> TOKEN=<your_token>
+>
+> CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
+> CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+> CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
 
 ### Running the Project
 Open two terminal windows and run the following commands:
 
 ##### Backend
-cd backend && npm run dev
+`cd backend && npm run dev`
 
 ##### Frontend
-cd frontend && npm run dev
+`cd frontend && npm run dev`
 
 Your application should now be running locally!
 
