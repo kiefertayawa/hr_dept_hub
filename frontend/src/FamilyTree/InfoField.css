@@ -10,12 +10,12 @@
     margin-bottom: 5px;
     color: #003366;
     font-weight: bold;
-    font-size: 150%;
+    font-size: 2vh;
     margin-left: 10px;
 }
 
 .custom-label {
-    font-size: 130%;
+    font-size: 2vh;
     font-weight: bold; 
     color: #003366; 
     letter-spacing: -1px;
@@ -35,6 +35,6 @@
     border: none;
     color: white;
     background-color: #003366;
-    font-size: 150%;
+    font-size: 2vh;
     opacity: 0.90;
 }
