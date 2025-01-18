@@ -105,7 +105,7 @@ export default function Admin_FamilyTree() {
             <div className={`chart-container ${nodeInfo ? 'hidden' : ''}`}>
                 
                 {/* Search bar and suggestions */}
-                <Search data={data} switchBloodline={switchBloodline} chartRef={chartRef}/>
+                <Search data={data} switchBloodline={switchBloodline}/>
                 
                 {/* Left and right buttons */}
                 <button className="nav-button left" onClick={() => switchBloodline(index-1)}><img src={leftArrow} alt="<" /></button>
