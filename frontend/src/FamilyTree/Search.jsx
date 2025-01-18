@@ -3,15 +3,20 @@ import "./Search.css";
 
 export default function Search({data, switchBloodline, chartRef}){
     
+    // States
     const [suggestions, setSuggestions] = useState([]);
     const [isFocused, setIsFocused] = useState(false);  
     const [inputValue, setInputValue] = useState("");
 
-    function search(searchTerm){
+    // Function for handling search
+    function handleSearch(searchTerm){
+        
+        // Init search input clears suggestions
         const local = []
-        console.log(searchTerm)
         setSuggestions([])
         setInputValue(searchTerm);
+
+        // Finds all members that match search term
         searchTerm && data.forEach(bloodline => {
             bloodline.forEach(member => {
                 if(member.name.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0){
@@ -19,10 +24,14 @@ export default function Search({data, switchBloodline, chartRef}){
                 }
             });
         });
+
         setSuggestions(local)
     }
 
-    function searchClick(member){
+    // FUnction for handling suggestion on click
+    function suggOnClick(member){
+        
+        // Find the index of the member clicked
         let index = 0
         while(index<data.length){
             
@@ -31,11 +40,14 @@ export default function Search({data, switchBloodline, chartRef}){
             }
             index++
         }
+
+        // Switched bloodline to that index
         switchBloodline(index, member.id)
     }
 
     return (
         <div className="search-container">
+
             {/* Search bar */}
             <div className="search-input-wrapper">
             <svg
@@ -51,7 +63,7 @@ export default function Search({data, switchBloodline, chartRef}){
                 <input
                     className={'search-input ${isFocused ? "focused" : ""}'} 
                     type="text"
-                    onChange={(e) => search(e.target.value)}
+                    onChange={(e) => handleSearch(e.target.value)}
                     placeholder="Search"
                     onFocus={() => setIsFocused(true)} 
                     onBlur={() => setIsFocused(false)}  
@@ -64,7 +76,7 @@ export default function Search({data, switchBloodline, chartRef}){
                     {suggestions.map((suggestion) => (
                         <button
                             key={suggestion.id}
-                            onClick={() => searchClick(suggestion)}
+                            onClick={() => suggOnClick(suggestion)}
                             className="suggestion-button"
                         >
                             {suggestion.name}
@@ -72,6 +84,7 @@ export default function Search({data, switchBloodline, chartRef}){
                     ))}
                 </div>
             )}
+            
         </div>
     );
 }
