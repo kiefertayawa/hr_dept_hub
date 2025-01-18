@@ -13,6 +13,7 @@ const Login = () => {
     
     await login({username, password})
     console.log(error)
+    error && window.alert("Incorrect Username/Password")
     
   }
 
@@ -35,7 +36,6 @@ const Login = () => {
             />
 
             <button type="submit" className="login-btn" disabled = {isLoading}>LOGIN</button>
-            {error && <div className="error">{window.alert("Incorrect Username/Password")}</div>}
           </form>
         </div>
 
