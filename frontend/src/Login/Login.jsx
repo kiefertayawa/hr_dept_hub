@@ -14,7 +14,6 @@ const Login = () => {
     await login({username, password})
     console.log(error)
     error && window.alert("Incorrect Username/Password")
-    
   }
 
   return (
