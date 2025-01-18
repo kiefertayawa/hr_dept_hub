@@ -46,5 +46,49 @@ The HR Department Hub is primarily used to serve as a centralized platform for H
 
 ![Image](https://github.com/user-attachments/assets/f3042e46-7e49-4b52-a863-874ff0bf555e)
 
+## How to Run the Project
+### Setup
+
+1. **Clone the Repository**
+   - git clone https://github.com/kiefertayawa/hr_dept_hub.git
+
+2. **Request Access**
+   - Ask for an invite from the developers to access the MongoDB project.
+   - Add your current IP address in the MongoDB network access settings.
+
+3. **Install Dependencies**
+   - cd backend && npm install
+   - cd frontend && npm install
+
+### Environment Variables
+Request the necessary credentials from the developers and create the following environment files:
+
+##### ./backend/.env
+MONGO_URI=<your_mongo_uri>
+TOKEN=<your_token>
+
+CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
+CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+
+##### ./credentials.env
+MONGO_URI=<your_mongo_uri>
+TOKEN=<your_token>
+
+CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
+CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+
+### Running the Project
+Open two terminal windows and run the following commands:
+
+##### Backend
+cd backend && npm run dev
+
+##### Frontend
+cd frontend && npm run dev
+
+Your application should now be running locally!
+
 ## References
 Repo: https://github.com/bumbeishvili/org-chart
