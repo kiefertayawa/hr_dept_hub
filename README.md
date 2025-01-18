@@ -20,9 +20,11 @@ The HR Department Hub is a centralized platform designed for the Human Resources
 The HR Department Hub is primarily used to serve as a centralized platform for HR-related information within the Young Software Engineer Society (YSES). It aims to enhance collaboration, provide essential HR services, and strengthen resident connections.
 
 ## View of the HR Department Hub 
-**User view**
-<!-- Uploading "userview1.png"... -->
-<!-- Uploading "userview1.png"... -->
+#### User view
+
+![Image](https://github.com/user-attachments/assets/a0ac35f6-ad8a-4798-a7bc-fd2251577557)
+
+![Image](https://github.com/user-attachments/assets/9d8b3e1b-9f46-4f2d-a967-e4f8dbd3be2f)
 
 ## References
 Repo: https://github.com/bumbeishvili/org-chart
