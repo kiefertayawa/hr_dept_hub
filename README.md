@@ -26,5 +26,25 @@ The HR Department Hub is primarily used to serve as a centralized platform for H
 
 ![Image](https://github.com/user-attachments/assets/9d8b3e1b-9f46-4f2d-a967-e4f8dbd3be2f)
 
+#### User view (member is clicked)
+
+![Image](https://github.com/user-attachments/assets/abcf159b-80bc-4307-b8cb-9f3b9e0b853f)
+
+#### Search Feature
+
+![Image](https://github.com/user-attachments/assets/2193e1fb-559a-4855-b2f9-82a18ca8cb4b)
+
+#### Login (Admin)
+
+![Image](https://github.com/user-attachments/assets/4fa0557d-12b0-483b-87ae-779405fd6f3f)
+
+#### Admin view (Add mentee or Delete mentor)
+
+![Image](https://github.com/user-attachments/assets/aa12926e-3c7f-4630-bf05-29680f217033)
+
+#### Admin view (Adding a member)
+
+![Image](https://github.com/user-attachments/assets/f3042e46-7e49-4b52-a863-874ff0bf555e)
+
 ## References
 Repo: https://github.com/bumbeishvili/org-chart
