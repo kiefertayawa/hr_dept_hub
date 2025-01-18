@@ -8,12 +8,15 @@ import Search from '../FamilyTree/Search.jsx';
 import AdminMemberInfo from './AdminMemberInfo.jsx';
 
 export default function Admin_FamilyTree() {
+
+    // States and refs
     const [data, setData] = useState(null);
     const [index, setIndex] = useState(0);
     const d3Container = useRef(null);
     const chartRef = useRef(new OrgChart());
     const [nodeInfo, setNodeInfo] = useState(null);
 
+    // Initializationn of the chartRef / family tree
     function generateChart() {
         if (data && d3Container.current) {
             chartRef.current
@@ -36,10 +39,9 @@ export default function Admin_FamilyTree() {
                         </div>
                     `;
                 })
-                
                 .expandAll()
                 .onNodeClick((d) => {
-                    console.log(d.data)
+                    console.log(d)
                     setNodeInfo({ ...d.data });
                 })
                 .render();
@@ -47,7 +49,7 @@ export default function Admin_FamilyTree() {
     }
     
     
-
+    // Fetches the data for the family tree at the beginning
     useEffect(() => {
         d3.json('http://localhost:4000/api/member/getAll')
         .then((data) => {
@@ -55,22 +57,27 @@ export default function Admin_FamilyTree() {
         })
     }, [true]);
 
+    // Calls generateChart() at the beginning 
     useLayoutEffect(() => generateChart(), [data, d3Container]);
     
+    // Function for switching the bloodline being viewed
     function switchBloodline(index, id=0) {
+
+        // Ensures index is within proper bounds
         if (data && index >= 0 && index < data.length){
 
+            // Sets the current index and the bloodline
             setIndex(index)
-
             chartRef.current.data(data[index]).expandAll()
 
+            // When using the left and right buttons
             if(id === 0){
                 chartRef.current.fit()
                 return
             }
 
+            // When using search, identifies the member clicked in the suggestions
             let nodeOut = null
-        
             for(const node of chartRef.current.getChartState().allNodes){
                 if(node.id === id) { nodeOut = node }
             }
@@ -81,27 +88,35 @@ export default function Admin_FamilyTree() {
             // y0 and y1 are the vertical boundaries
             // do not change nodeOut variable, only ints
 
-            chartRef.current
+            chartRef.current.expandAll()
             .zoomTreeBounds({
                 x0:nodeOut.x0  -  80,
                 x1:nodeOut.x   +  80,
                 y0:nodeOut.y0  +  0,
                 y1:nodeOut.y   +  600,
-            })
+            }).render()
 
         }
     }
 
     return (
         <>
-             {/* displays the family tree and the buttons*/}
-
+            {/* The family tree container */}
             <div className={`chart-container ${nodeInfo ? 'hidden' : ''}`}>
+                
+                {/* Search bar and suggestions */}
                 <Search data={data} switchBloodline={switchBloodline} chartRef={chartRef}/>
+                
+                {/* Left and right buttons */}
                 <button className="nav-button left" onClick={() => switchBloodline(index-1)}><img src={leftArrow} alt="<" /></button>
                 <button className="nav-button right" onClick={() => switchBloodline(index+1)}><img src={rightArrow} alt=">" /></button>
+                
+                {/* SVG of the family tree */}
                 {data && <div ref={d3Container} className="d3-content" />}
+            
             </div>
+
+            {/* Member info pop up when node is clicked */}
             <div className={`info-container ${nodeInfo ? 'visible' : 'hidden'}`}>
 
                 {/* this is where the params are passed */}
