@@ -34,10 +34,19 @@ const uploadMemberImage = async (req, res) => {
       imageUrl = placeholderImageUrl;
     }
 
-    // TODO: i think this could break the db if many members are deleted but it will work for the meantime
-    // Get the next member ID by counting the current members
-    const memberCount = await Member.countDocuments({});
-    const newId = memberCount + 1;  // Increment the member count for the new member ID
+    // Get the next member ID by getting the maximum id in the database
+    const highestId = async() => {
+      const allMembers = await Member.find();
+      let maxId = 0
+      for(const member of allMembers){
+        if(parseInt(member.id) > maxId){
+          maxId = parseInt(member.id) // parse member id from string to int
+        }
+      }
+      console.log(maxId)
+      return '' + (maxId + 1) // Increment the member count for the new member ID and turn back into string
+    }
+    const newId = await highestId();
 
     // Create a new member with the incremented ID and uploaded image URL
     const { parentId, name, collegeBatch, ysesBatch, bloodline, mentor } = req.body;

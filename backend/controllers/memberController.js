@@ -183,11 +183,19 @@ const deleteMemberById = async (req, res) => {
     try {
         console.log("req.body: ", req.body);
 
-        const deletedMember = await Member.findByIdAndDelete(req.body._id);
-        
-        if (!deletedMember) {
+        const memberToBeDeleted = await Member.findById(req.body._id);
+
+        if (!memberToBeDeleted) {
             return res.status(404).json({ error: "Member not found" });
         }
+
+        const children = await Member.find({parentId:memberToBeDeleted.id});
+
+        children.forEach(async(child) => {
+            await Member.findByIdAndUpdate(child._id,{parentId:memberToBeDeleted.parentId,mentor:memberToBeDeleted.mentor})
+        });
+
+        await Member.findByIdAndDelete(req.body._id);
     
         res.json({ message: "Member deleted successfully" });
     } catch (error) {
